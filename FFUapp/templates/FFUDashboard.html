@@ -1,4 +1,3 @@
-{% load humanize %}
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="generator" content="Hugo 0.115.4">
-    <title>FFU Quotation</title>
+    <title>FFU Dashboard</title>
 
 <link rel="canonical" href="https://getbootstrap.kr/docs/5.3/examples/sidebars/">
 
@@ -29,38 +28,25 @@
 
 
 <style>
-    .btn-container {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-    }
-    .btn {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
     body {
         background-color: #E6E6E6;
     }
     
 
     
-    .bd-placeholder-img {
+      .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
-    }
+      }
 
-    @media (min-width: 768px) {
+      @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
-    }
+      }
 
       .b-example-divider {
         width: 100%;
@@ -130,11 +116,20 @@
         align-items: center;
       }
 
+      .tableauPlaceholderContainer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+        margin-right: 3px;
+        margin-left : 0px;
+        
+    }
     .b-example-divider {
         width: 1%;
         background-color: #E6E6E6;
         box-shadow: none;
     }
+
     .nav-link:hover {
       background-color: #2E64FE; /* 원하는 배경색으로 변경 */
       color: #FFF; /* 원하는 텍스트 색상으로 변경 */
@@ -147,6 +142,7 @@
     .nav-link {
       margin-top: 3px;
     }
+
 
 </style>
 
@@ -187,7 +183,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link text-white" onclick="goToHome()">
+        <a href="#" class="nav-link text-white"  onclick="goToHome()">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
           Home
         </a>
@@ -199,13 +195,13 @@
         }
         </script>
       <li class="nav-item">
-        <a href="/ffu/FFUDashboard/" class="nav-link text-white" >
+        <a href="#" class="nav-link activate" aria-current="page" >
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
             Dashboard
         </a>
       </li>
       <li>
-        <a href="/ffu/FFUInput/" class="nav-link activate" aria-current="page">
+        <a href="/ffu/FFUInput/" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
           Quotation
         </a>
@@ -229,40 +225,40 @@
 
   <div class="b-example-divider b-example-vr"></div>
 
-  <div>
-    <table>
-        <tr>
-            <th>품명</th>
-            <th>수량</th>
-            <th>단가</th>
-            <th>합계</th>
-        </tr>
-        {% for item in items %}
-        <tr>
-            <td>{{ item.0 }}</td>
-            <td>{{ item.1 }}</td>
-            <td>{{ item.2|floatformat:"0"|intcomma }}</td>
-            <td>{{ item.3|floatformat:"0"|intcomma }}</td>
-
-        </tr>
-        {% endfor %}
-        <tr>
-            <td>UNIT 소계</td>
-            <td></td>
-            <td>\ {{ subtotal_unit|floatformat:"0"|intcomma }}</td>
-            <td>\ {{ subtotal_totals|floatformat:"0"|intcomma }}</td>
-        </tr>
-    </table>
-    <button onclick="goBack()">이전</button>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
+  <div class="tableauPlaceholderContainer">
+    <div class='tableauPlaceholder' id='viz1692160209743' style='position: relative; solid #ccc; padding: 10px;'>
+        <noscript>
+            <a href='#'><img alt='대시보드 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;20231_16902960081490&#47;1&#47;1_rss.png' style='border: none' /></a>
+        </noscript>
+        <object class='tableauViz'  style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='20231_16902960081490&#47;1' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;20231_16902960081490&#47;1&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='ko-KR' />
+            <param name='filter' value='publish=yes' />
+        </object>
+    </div>
+    <script type='text/javascript'> 
+        var divElement = document.getElementById('viz1692160209743');
+        var vizElement = divElement.getElementsByTagName('object')[0]; 
+        var newHeight = '900px'; 
+        var newWidth = '1400px'; 
+        vizElement.style.height = newHeight;
+        vizElement.style.width = newWidth;
+        var scriptElement = document.createElement('script');                    
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);                
     </script>
-  </div>
-
-
+    </div>
 
 
 </main>

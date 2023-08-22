@@ -110,3 +110,6 @@ def ffuInput(request):
 
 def ffuOutput(request):
     return render(request, 'FFUOutput.html')
+
+def ffuDashboard(request):
+    return render(request, 'FFUDashboard.html')    
