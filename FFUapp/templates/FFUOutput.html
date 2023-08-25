@@ -252,6 +252,27 @@
             <td>\ {{ subtotal_unit|floatformat:"0"|intcomma }}</td>
             <td>\ {{ subtotal_totals|floatformat:"0"|intcomma }}</td>
         </tr>
+
+        <!-- <tr>
+            <td>FILTER</td>
+            <td>{{ filter_quantity }}</td>
+            <td>\ {{ filter_unit_price|floatformat:"0"|intcomma }}</td>
+            <td>\ {{ filter_total_price|floatformat:"0"|intcomma }}</td>
+        </tr>
+
+        <tr>
+            <td>FILTER 소계</td>
+            <td></td>
+            <td>\ {{ filter_unit_price|floatformat:"0"|intcomma }}</td>
+            <td>\ {{ filter_total_price|floatformat:"0"|intcomma }}</td>
+       </tr>
+  
+        <tr>
+            <td>합계</td>
+            <td></td>
+            <td>\ {{ grand_total_unit|floatformat:"0"|intcomma }}</td>
+            <td>\ {{ grand_total|floatformat:"0"|intcomma }}</td>
+        </tr> -->
     </table>
     <button onclick="goBack()">이전</button>
 

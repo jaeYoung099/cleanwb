@@ -8,6 +8,9 @@ from .Paint_views import calculate_paint_price
 from .Jab_views import calculate_jab_price
 from .Motor_views import calculate_motor_price
 from .Controller_views import calculate_controller_price
+from .Fan_views import calculate_fan_price
+from .Bellmouth_views import calculate_bellmouth_price
+
 
 # 1. 흰색글자로 바꾸기 2. kwargs 대체 방법이나 문제해결 3. 조립인건비 pass문제 해결
 자재비 = "자재비 (AL, SPCC 외)"
@@ -55,13 +58,10 @@ def get_price_for_item(item_name, size, spec, motortype=None, motor_company=None
         return calculate_controller_price(size, spec, motortype=motortype, motor_company=motor_company, watt=watt)
 
     elif item_name == FAN:
-        fan_speed = kwargs.get('fan_speed', None)
-        return fan_speed
+        return calculate_fan_price(size, spec, motortype=motortype)
         
     elif item_name == BELLMOUTH:
-        material = kwargs.get('material', None)
-        return material
-
+        return calculate_bellmouth_price(size, spec, motortype=motortype)
     else:
         return 0
 
@@ -87,16 +87,18 @@ def ffuInput(request):
             try:
                 if name in [MOTOR, 컨트롤러]:
                     unit_price = get_price_for_item(name, size, spec, motortype=motortype, motor_company=motor_company, watt=watt)
+                elif name in [FAN, BELLMOUTH]:
+                    unit_price = get_price_for_item(name, size, spec, motortype=motortype)
                 else:
-                    unit_price = get_price_for_item(name, size, spec)
+                    unit_price = get_price_for_item(name, size, spec) 
 
-                total_price = unit_price * quantity
-                items.append((name, quantity, unit_price, total_price))
+                total_price = unit_price * quantity                         # 합계 = 단가 * 수량
+                items.append((name, quantity, unit_price, total_price))     # 품명, 수량, 단가, 합계
             except Exception as e:
                 print(f"Error occurred at {name}: {e}")  # 로깅을 위한 출력
 
-        subtotal_unit = sum([item[2] for item in items])
-        subtotal_totals = sum([item[3] for item in items])
+        subtotal_unit = sum([item[2] for item in items])                    # UNIT 소계 단가
+        subtotal_totals = sum([item[3] for item in items])                  # UNIT 소계 합계
 
         context = {
             'items': items,

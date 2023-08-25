@@ -1,0 +1,23 @@
+from django.db import models
+
+class GenFan(models.Model):
+    size = models.CharField(primary_key=True, max_length=50)  # The composite primary key (size, motortype) found, that is not supported. The first column is selected.
+    motortype = models.CharField(max_length=50)
+    fan_size = models.CharField(max_length=16)
+    fan_price = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'gen_fan'
+        unique_together = (('size', 'motortype'),)
+
+class HighFan(models.Model):
+    size = models.CharField(primary_key=True, max_length=50)  # The composite primary key (size, motortype) found, that is not supported. The first column is selected.
+    motortype = models.CharField(max_length=50)
+    fan_size = models.CharField(max_length=16)
+    fan_price = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'high_fan'
+        unique_together = (('size', 'motortype'),)

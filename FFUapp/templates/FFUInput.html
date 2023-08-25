@@ -218,10 +218,6 @@
     <form id="ffuForm" action="/ffu/FFUInput/" method="post">
         {% csrf_token %}
     
-        <label for="businessOwner">사업주:
-            <input type="text" id="businessOwner" name="businessOwner" autocomplete="off" />
-        </label><br><br>
-    
         <div class="btn-group dropend">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               지역
@@ -266,6 +262,14 @@
                 <option value="부산">부산</option>
             </select>
         </label><br><br>
+
+        <label for="businessOwner">현장명:
+            <input type="text" id="businessOwner" name="businessOwner" autocomplete="off" />
+        </label><br><br>
+
+        <label for="quantity">수량:
+            <input type="number" id="quantity" name="quantity" autocomplete="off" />
+        </label><br><br>
     
         <label for="size">규격:
             <select id="size" name="size">
@@ -278,7 +282,6 @@
             </select>
         </label><br><br>
     
-    
         <label for="motor_company">모터 제조사 선택:
             <select id="motor_company" name="motor_company">
                 <option value="블루코드">블루코드</option>
@@ -286,20 +289,28 @@
             </select>
         </label><br><br>
     
-        <label for="motortype">모터 종류 선택:
+        <label for="motortype">모터 종류:
             <select id="motortype" name="motortype">
                 <option value="BLDC">BLDC</option>
                 <option value="AC">AC</option>
             </select>
         </label><br><br>
     
-        <label for="watt">모터 W 선택:
+        <label for="watt">모터 용량:
             <select id="watt" name="watt">
                 <option value="300W">300W</option>
                 <option value="400W">400W</option>
                 <option value="400W SDC">400W SDC</option>
                 <option value="650W 내장형">650W 내장형</option>
                 <option value="650W 외장형">650W 외장형</option>
+            </select>
+        </label><br><br>
+
+        <label for="windSpeed">풍량/풍속:
+            <input type="number" step="0.01" id="windSpeed" name="windSpeedValue" autocomplete="off" />
+            <select id="windSpeedUnit" name="windSpeedUnit">
+                <option value="ms">m/s</option>
+                <option value="cmm">cmm</option>
             </select>
         </label><br><br>
     
@@ -317,21 +328,17 @@
                 <option value="고사양">고사양</option>
             </select>
         </label><br><br>
-    
-        <label for="windSpeedMS">풍량/풍속 (m/s):
-            <input type="number" step="0.01" id="windSpeedMS" name="windSpeedMS" autocomplete="off" />
-        </label><br><br>
-    
-        <label for="windSpeedCMM">풍량/풍속 (cmm):
-            <input type="number" step="0.01" id="windSpeedCMM" name="windSpeedCMM" autocomplete="off" />
-        </label><br><br>
-    
-        <label for="efficiency">효율 (%):
+
+        <!-- <label for="efficiency">효율 (%):
             <input type="number" step="0.01" id="efficiency" name="efficiency" autocomplete="off" />
+        </label><br><br> -->
+
+        <label for="maintenance">관리비(%):
+            <input type="number" id="maintenance" name="maintenance" autocomplete="off" />
         </label><br><br>
-    
-        <label for="quantity">수량:
-            <input type="number" id="quantity" name="quantity" autocomplete="off" />
+
+        <label for="operating_profit">영업이익(%):
+            <input type="number" id="operating_profit" name="operating_profit" autocomplete="off" />
         </label><br><br>
     
         <button type="button" onclick="goBack()">이전</button>
