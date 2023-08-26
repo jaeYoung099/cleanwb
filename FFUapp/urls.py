@@ -5,4 +5,5 @@ urlpatterns = [
     path('FFUInput/', command_views.ffuInput),      # 'ffuInput/' : 웹페이지 URL에서 ffuInput/ | # views.ffuInput : 앞서 import한 views.py의 ffuInput 함수 
     path('FFUOutput/', command_views.ffuOutput),
     path('FFUDashboard/', command_views.ffuDashboard),
+    path('download_excel/', command_views.download_excel, name='download_excel'),  # 엑셀 다운로드를 위한 경로 추가
 ]
