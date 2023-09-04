@@ -232,20 +232,27 @@
   <div>
     <table>
         <tr>
-            <th>품명</th>
+            <th>품명</th>     
             <th>수량</th>
             <th>단가</th>
             <th>합계</th>
         </tr>
         {% for item in items %}
-        <tr>
-            <td>{{ item.0 }}</td>
-            <td>{{ item.1 }}</td>
-            <td>{{ item.2|floatformat:"0"|intcomma }}</td>
-            <td>{{ item.3|floatformat:"0"|intcomma }}</td>
-
-        </tr>
+            <tr>
+                <td>{{ item.0 }}</td>
+                <td>{{ item.1 }}</td>
+                <td>{{ item.2|floatformat:"0"|intcomma }}</td>     
+                <td>{{ item.3|floatformat:"0"|intcomma }}</td>
+            </tr>
         {% endfor %}
+        
+        <tr>
+            <td>운반비</td>
+            <td>{{ transportation_info }}</td>
+            <td>{{ transportation_unit_price|floatformat:"0"|intcomma }}</td>
+            <td>{{ transportation_total_price|floatformat:"0"|intcomma }}</td>
+        </tr>
+    
         <tr>
             <td>UNIT 소계</td>
             <td></td>
@@ -253,6 +260,14 @@
             <td>\ {{ subtotal_totals|floatformat:"0"|intcomma }}</td>
         </tr>
 
+        {% for carsize, ea in load_data.items %}  <!-- 이 부분 추가 -->
+            <tr>
+                <td>{{ carsize }}</td>
+                <td>{{ ea }}</td>
+                <td></td>  <!-- 단가 항목에 대한 열은 비워둠 -->
+                <td></td>  <!-- 합계 항목에 대한 열은 비워둠 -->
+            </tr>
+        {% endfor %}
         <!-- <tr>
             <td>FILTER</td>
             <td>{{ filter_quantity }}</td>
@@ -276,7 +291,7 @@
     </table>
     <button onclick="goBack()">이전</button>
     <a href="{% url 'download_excel' %}" class="btn btn-primary">엑셀로 변환</a>
-
+    <a href="{% url 'test' %}" class="btn btn-primary">Test</a>
     <script>
         function goBack() {
             window.history.back();
