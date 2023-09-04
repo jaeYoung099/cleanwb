@@ -11,9 +11,7 @@ def calculate_carsize(size, quantity):
             carsize = item.carsize
             ea = item.ea
             load_data[carsize] = ea
-            
-        return load_data
-
+        
         one_carnum, five_carnum, ele_carnum = 0, 0, 0 
 
         one_ton_ea = load_data['1ton']
@@ -50,6 +48,7 @@ def calculate_carsize(size, quantity):
         return {'one_carnum': 0, 'five_carnum': 0, 'ele_carnum': 0}
 
 
+
 def calculate_moveprice(location, size, quantity):
     try:
         loc_data_qs = LocationMovecost.objects.filter(location=location)
@@ -70,23 +69,19 @@ def calculate_moveprice(location, size, quantity):
         onemove_price = move_price_data.get('1ton', 0)
 
         # calculate_carsize 함수에서 각 carsize의 carnum을 가져온다
-        one_carnum, five_carnum, ele_carnum = calculate_carsize(size, quantity)
+        carsize_count = calculate_carsize(size, quantity)
 
         # 각 carsize의 carprice를 계산한다
-        elecarprice = elemove_price * ele_carnum
-        fivecarprice = fivemove_price * five_carnum
-        onecarprice = onemove_price * one_carnum
+        elecarprice = elemove_price * carsize_count['ele_carnum']
+        fivecarprice = fivemove_price * carsize_count['five_carnum']
+        onecarprice = onemove_price * carsize_count['one_carnum']
 
         # 최종 운반비를 계산한다
         car_price = elecarprice + fivecarprice + onecarprice
 
         return {
             'car_price': car_price,
-            'car_count_by_size': {
-                'one_carnum': one_carnum,
-                'five_carnum': five_carnum,
-                'ele_carnum': ele_carnum
-            }
+            'car_count_by_size': carsize_count
         }
 
     except Exception as e:

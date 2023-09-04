@@ -109,8 +109,8 @@ def ffuInput(request):
         motortype = request.POST.get('motortype')
         motor_company = request.POST.get('motor_company')
         watt = request.POST.get('watt')
-        businessOwner = request.POST.get('businessOwner')
-        location = request.POST.get('location')
+        businessOwner = request.POST.get('businessOwner', '')
+        location = request.POST.get('location', '')
 
         request.session['size'] = size
         request.session['businessOwner'] = businessOwner
@@ -124,8 +124,11 @@ def ffuInput(request):
             quantity = 1
 
         # 운반비 계산
-        transportation_info, transportation_unit_price, transportation_total_price = calculate_transportation(size, quantity, location)
+        move_price_data = calculate_moveprice(location, size, quantity)  # 이 함수가 calculate_carsize와 연계하여 운반비를 계산합니다
 
+        transportation_info = f"1ton: {move_price_data['car_count_by_size']['one_carnum']}대, 5ton: {move_price_data['car_count_by_size']['five_carnum']}대, 11ton: {move_price_data['car_count_by_size']['ele_carnum']}대"
+        transportation_unit_price = move_price_data['car_price']  # 계산된 운반비 단가
+        transportation_total_price = transportation_unit_price # 계산된 운반비 합계
 
         names = [자재비, 도장비, NCT_가공비, MOTOR, 컨트롤러, FAN, BELLMOUTH, 볼트, 포장용잡자재, 조립인건비, 포장팔렛트]
 
@@ -146,9 +149,12 @@ def ffuInput(request):
                 total_price = unit_price * quantity                         # 합계 = 단가 * 수량
                 items.append((name, quantity, unit_price, total_price))     # 품명, 수량, 단가, 합계
 
-                transportation_info = f"1ton: {car_count_by_size['one_carnum']}대, 5ton: {car_count_by_size['five_carnum']}대, 11ton: {car_count_by_size['ele_carnum']}대"
-                transportation_unit_price = car_price  # 단가 정보 가져오기
-                transportation_total_price = transportation_unit_price * quantity  # 합계 계산
+                # transportation_info, transportation_unit_price, transportation_total_price = calculate_transportation(size, quantity, location)
+                move_price_data = calculate_moveprice(location, size, quantity)
+                transportation_info = f"1ton: {move_price_data['car_count_by_size']['one_carnum']}대, 5ton: {move_price_data['car_count_by_size']['five_carnum']}대, 11ton: {move_price_data['car_count_by_size']['ele_carnum']}대"
+                transportation_unit_price = move_price_data['car_price']  # 계산된 운반비 단가
+                transportation_total_price = transportation_unit_price  # 계산된 운반비 합계
+
                 
             except Exception as e:
                 print(f"Error occurred at {name}: {e}")  # 로깅을 위한 출력
@@ -167,7 +173,9 @@ def ffuInput(request):
             'transportation_info': transportation_info,
             'transportation_unit_price': transportation_unit_price,
             'transportation_total_price': transportation_total_price,
-            'load_data': load_data,  # 추가해 줄 부분 # ea 나중에 삭제
+            'load_data': load_data,
+            'businessOwner': businessOwner,
+            'location': location,
         }
 
         return render(request, 'FFUOutput.html', context)
@@ -181,18 +189,6 @@ def ffuOutput(request):
 def ffuDashboard(request):
     return render(request, 'FFUDashboard.html')    
 
-def test(request):
-    if request.method == 'POST':
-        location = request.POST.get('location', '')
-        selected_size = request.POST.get('selected_size', '')  # selected_size 가져오기
-
-        # calculate_moveprice 함수를 사용하여 데이터 계산
-        move_data = calculate_moveprice(location, selected_size, quantity)  # selected_size로 수정
-        print("Calculated Move Data:", move_data)
-
-        return render(request, 'test.html', {'move_data': move_data})
-    else:
-        return render(request, 'test.html')
 
 
 
