@@ -8,7 +8,7 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side, NamedSty
 from django.http import HttpResponse
 
 # data to excel
-def export_to_excel(request, items, businessOwner, motortype, location, size, quantity, subtotal_unit, subtotal_totals, materialcost_unit_price, paint_unit_price, nct_unit_price, motor_unit_price, controller_unit_price, fan_unit_price, bellmouth_unit_price, volt_unit_price, jab_unit_price, assembly_unit_price, pack_unit_price, materialcost_total_price, paint_total_price, nct_total_price, motor_total_price, controller_total_price, fan_total_price, bellmouth_total_price, volt_total_price, jab_total_price, assembly_total_price, pack_total_price, transportation_total_price, filter_unit_price, filter_total_price, direct_unit, direct_totals, maintenance_unit, maintenance_totals, operating_profit_unit, operating_profit_totals, aggregate_unit, aggregate_totals):
+def export_to_excel(request, items, businessOwner, motortype, location, size, quantity, subtotal_unit, subtotal_totals, materialcost_unit_price, paint_unit_price, nct_unit_price, motor_unit_price, controller_unit_price, fan_unit_price, bellmouth_unit_price, volt_unit_price, jab_unit_price, assembly_unit_price, pack_unit_price, materialcost_total_price, paint_total_price, nct_total_price, motor_total_price, controller_total_price, fan_total_price, bellmouth_total_price, volt_total_price, jab_total_price, assembly_total_price, pack_total_price, transportation_total_price, ffilter_unit_price, ffilter_total_price, direct_unit, direct_totals, maintenance_unit, maintenance_totals, operating_profit_unit, operating_profit_totals, aggregate_unit, aggregate_totals):
     wb = Workbook()
     ws = wb.active
 
@@ -201,12 +201,12 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
 
     # FILTER 소계
     ws["B20"].value = "FILTER"
-    ws['D20'] = f'{int(filter_unit_price):,}'
-    ws['E20'] = f'{int(filter_total_price):,}'
+    ws['D20'] = f'{int(ffilter_unit_price):,}'
+    ws['E20'] = f'{int(ffilter_total_price):,}'
 
     ws["B21"].value = "FILTER 소계"
-    ws['D21'] = f'\\   {int(filter_unit_price):,}'
-    ws['E21'] = f'\\   {int(filter_total_price):,}'
+    ws['D21'] = f'\\   {int(ffilter_unit_price):,}'
+    ws['E21'] = f'\\   {int(ffilter_total_price):,}'
 
     # 원가 합계, 간접비, 총계, 비고
     ws["B22"].value = "원가 합계"
@@ -342,7 +342,7 @@ def download_excel(request):
     jab_unit_price = request.session.get('jab_unit_price', 0)
     assembly_unit_price = request.session.get('assembly_unit_price', 0)
     pack_unit_price = request.session.get('pack_unit_price', 0)
-    filter_unit_price = request.session.get('filter_unit_price', 0)
+    ffilter_unit_price = request.session.get('ffilter_unit_price', 0)
     direct_unit = request.session.get('direct_unit', 0)
     maintenance_unit = request.session.get('maintenance_unit', 0)
     operating_profit_unit = request.session.get('operating_profit_unit', 0)
@@ -361,7 +361,7 @@ def download_excel(request):
     assembly_total_price = request.session.get('assembly_total_price', 0)
     pack_total_price = request.session.get('pack_total_price', 0)
     transportation_total_price = request.session.get('transportation_total_price', 0)
-    filter_total_price = request.session.get('filter_total_price', 0)
+    ffilter_total_price = request.session.get('ffilter_total_price', 0)
     direct_totals = request.session.get('direct_totals', 0)
     maintenance_totals = request.session.get('maintenance_totals', 0)
     operating_profit_totals = request.session.get('operating_profit_totals', 0)
@@ -400,8 +400,8 @@ def download_excel(request):
     assembly_total_price,
     pack_total_price,
     transportation_total_price,
-    filter_unit_price,
-    filter_total_price, 
+    ffilter_unit_price,
+    ffilter_total_price, 
     direct_unit, direct_totals, 
     maintenance_unit, 
     maintenance_totals, 

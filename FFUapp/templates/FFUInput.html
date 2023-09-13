@@ -242,13 +242,12 @@
       font-weight: 300;
     }
 
-    h5 {
+    h3 {
       margin-top: 30px!important;
     }
-    h6 {
+    h4 {
       margin-top: 20px;
       font-weight: 300;
-      font-size:14px;
     }
 
     .sub-botton {
@@ -388,7 +387,7 @@
     <form id="ffuForm" action="/ffu/FFUInput/" method="post">
         {% csrf_token %}
 
-        <h5>FFU 견적 산출하는 페이지</h5><br>
+        <h3>FFU 견적 산출하는 페이지입니다.</h3><br>
 
 
         <div class="container">
@@ -455,16 +454,6 @@
       </div>
 
       <div class="parent">
-        <div class="first-box">
-        <label for="motor_company">모터 제조사
-          <br>
-            <select id="motor_company" name="motor_company">
-                <option value="블루코드">블루코드</option>
-                <option value="시스웍">시스웍</option>
-            </select>
-        </label><br><br>
-      </div>
-
       <div class="first-box">
         <label for="motortype">모터 종류
           <br>
@@ -475,15 +464,15 @@
         </label><br><br>
       </div>
     
+
+      </div>
+    
       <div class="first-box">
-        <label for="watt">모터 용량
+        <label for="ph">PH
           <br>
-            <select id="watt" name="watt">
-                <option value="300W">300W</option>
-                <option value="400W">400W</option>
-                <option value="400W SDC">400W SDC</option>
-                <option value="650W 내장형">650W 내장형</option>
-                <option value="650W 외장형">650W 외장형</option>
+            <select id="ph" name="ph">
+                <option value="1PH">1PH</option>
+                <option value="3PH">3PH</option>
             </select>
         </label><br><br>
       </div>
@@ -491,11 +480,43 @@
       </div>
       
       <div class="parent">
+    
+      <div class="first-box">
+        <label for="filterstyle">필터 종류
+          <br>
+            <select id="filterstyle" name="filterstyle">
+                <option value="HEPA">HEPA</option>
+                <option value="ULPA">ULPA</option>
+            </select>
+        </label><br><br>
+      </div>
+    
+      <div class="first-box">
+        <label for="filterpressure">필터 차압 (mmAq)
+          <br>
+            <select id="filterpressure" name="filterpressure">
+              <option value="8.5mmAq">8.5mmAq</option>
+              <option value="9.5mmAq">9.5mmAq</option>
+              <option value="10.5mmAq">10.5mmAq</option>
+              <option value="13.5mmAq">13.5mmAq</option>
+              <option value="11.8mmAq">11.8mmAq</option>
+          </select>
+        </label><br><br>
+      </div>
+
+    </div>
+
+      <div class="parent">
         <div class="first-box">
         <label for="windSpeed">풍량/풍속
           <br>
           <div class="wind-container">
-            <input type="number" step="0.01" id="windSpeed" name="windSpeedValue" autocomplete="off" />
+              <select id="windSpeed" name="windSpeed">
+                <option value="0.35m/s">0.35m/s</option>
+                <option value="0.4m/s">0.4m/s</option>
+                <option value="0.7m/s">0.7m/s</option>
+                <option value="0.8m/s">0.8m/s</option>
+            </select>
             <select id="windSpeedUnit" name="windSpeedUnit">
                 <option value="ms">m/s</option>
                 <option value="cmm">cmm</option>
@@ -505,20 +526,12 @@
       </div>
     
       <div class="first-box">
-        <label for="pressure">기외 정압 (mmaq)
+        <label for="pressure">기외 정압 (mmAq)
           <br>
             <input type="number" step="0.01" id="pressure" name="pressure" autocomplete="off" />
         </label><br><br>
       </div>
     
-      <div class="first-box">
-        <label for="filterPressure">필터 차압 (mmaq)
-          <br>
-            <input type="number" step="0.01" id="filterPressure" name="filterPressure" autocomplete="off" />
-        </label><br><br>
-      </div>
-    </div>
-    <div class="parent">
       <div class="first-box">
         <label for="spec">사양
           <br>
@@ -528,13 +541,10 @@
             </select>
         </label><br><br>
       </div>
-    
+
     </div>
 
-        <!-- <label for="efficiency">효율 (%):
-            <input type="number" step="0.01" id="efficiency" name="efficiency" autocomplete="off" />
-        </label><br><br> -->
-        <h6>간접비</h6><br>
+        <h4>간접비</h4><br>
         
         <div class="parent">
     

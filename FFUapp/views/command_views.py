@@ -12,6 +12,7 @@ from .Fan_views import calculate_fan_price
 from .Bellmouth_views import calculate_bellmouth_price
 from .excel_views import download_excel, export_to_excel
 from .Move_views import calculate_carsize, calculate_moveprice
+from .FFilter_views import calculate_ffilter_price
 
 자재비 = "자재비 (AL, SPCC 외)"
 도장비 = "도장비"
@@ -21,6 +22,7 @@ MOTOR = "MOTOR"
 FAN = "FAN"
 BELLMOUTH = "BELLMOUTH (보호망포함)"
 볼트 = "볼트&리벳"
+필터 = "FILTER"
 포장용잡자재 = "포장용 잡자재"
 조립인건비 = "조립인건비"
 포장팔렛트 = "포장팔렛트"
@@ -30,7 +32,7 @@ BELLMOUTH = "BELLMOUTH (보호망포함)"
 
 
 # OUTPUT 항목과 연관된 변수
-def get_price_for_item(item_name, size, spec, quantity=None, motortype=None, motor_company=None, watt=None, location=None, **kwargs):
+def get_price_for_item(item_name, size, spec, ph, quantity=None, motortype=None, location=None, filterpressure=None, filterstyle=None, **kwargs):
     try:
         if item_name == 운반비:
             price_dict = calculate_moveprice(location=location, size=size, quantity=quantity)
@@ -61,16 +63,19 @@ def get_price_for_item(item_name, size, spec, quantity=None, motortype=None, mot
             return calculate_jab_price(size, spec)
             
         elif item_name == MOTOR:
-            return calculate_motor_price(size, spec, motortype=motortype, motor_company=motor_company, watt=watt)
+            return calculate_motor_price(size, spec, motortype=motortype, ph=ph)
         
         elif item_name == 컨트롤러:
-            return calculate_controller_price(size, spec, motortype=motortype, motor_company=motor_company, watt=watt)
+            return calculate_controller_price(size, spec, motortype=motortype, ph=ph)
 
         elif item_name == FAN:
             return calculate_fan_price(size, spec, motortype=motortype)
             
         elif item_name == BELLMOUTH:
             return calculate_bellmouth_price(size, spec, motortype=motortype)
+        
+        elif item_name == 필터:
+            return calculate_ffilter_price(size, filterstyle=filterstyle, filterpressure=filterpressure)
 
         else:
             return 0
@@ -85,12 +90,13 @@ def ffuInput(request):
         size = request.POST.get('size') or 'Unknown Size'
         spec = request.POST.get('spec')
         motortype = request.POST.get('motortype')
-        motor_company = request.POST.get('motor_company')
-        watt = request.POST.get('watt')
+        ph = request.POST.get('ph')
         businessOwner = request.POST.get('businessOwner', '')
         location = request.POST.get('location', '')
         maintenance = request.POST.get('maintenance', '1')
         operating_profit = request.POST.get('operating_profit', '1')
+        filterstyle = request.POST.get('filterstyle')
+        filterpressure = request.POST.get('filterpressure')
         quantity_str = request.POST.get('quantity', '1')
         try:
             quantity = int(quantity_str)
@@ -137,11 +143,11 @@ def ffuInput(request):
         materialcost_total_price = materialcost_unit_price * quantity
 
         # 모터 단가, 합계 계산
-        motor_unit_price = round(calculate_motor_price(size, spec, motortype=motortype, motor_company=motor_company, watt=watt))
+        motor_unit_price = round(calculate_motor_price(size, spec, motortype=motortype, ph=ph))
         motor_total_price = motor_unit_price * quantity
 
         # 컨트롤러 단가, 합계 계산
-        controller_unit_price = round(calculate_controller_price(size, spec, motortype=motortype, motor_company=motor_company, watt=watt))
+        controller_unit_price = round(calculate_controller_price(size, spec, motortype=motortype, ph=ph))
         controller_total_price = controller_unit_price * quantity
 
         # FAN 단가, 합계 계산
@@ -153,17 +159,16 @@ def ffuInput(request):
         bellmouth_total_price = bellmouth_unit_price * quantity
 
         # FILTER 단가, 합계 계산
-        calculate_filter_price = 100.00
-        filter_unit_price = round(calculate_filter_price)
-        filter_total_price = filter_unit_price * quantity
+        ffilter_unit_price = round(calculate_ffilter_price(size, filterstyle=filterstyle, filterpressure=filterpressure))
+        ffilter_total_price = ffilter_unit_price * quantity
 
         # 합계 계산
         subtotal_unit = nct_unit_price + pack_unit_price + assembly_unit_price + jab_unit_price + volt_unit_price + paint_unit_price + materialcost_unit_price + motor_unit_price + controller_unit_price + fan_unit_price + bellmouth_unit_price + transportation_total_price
         subtotal_totals = quantity * (nct_unit_price + pack_unit_price + assembly_unit_price + jab_unit_price + volt_unit_price + paint_unit_price + materialcost_unit_price + motor_unit_price + controller_unit_price + fan_unit_price + bellmouth_unit_price) + transportation_total_price
 
         # 직접비 계산
-        direct_unit = filter_unit_price + subtotal_unit
-        direct_totals = filter_total_price + subtotal_totals
+        direct_unit = ffilter_unit_price + subtotal_unit
+        direct_totals = ffilter_total_price + subtotal_totals
 
         # 간접비 계산
 
@@ -222,8 +227,8 @@ def ffuInput(request):
             'fan_total_price' : fan_total_price,
             'bellmouth_unit_price' : bellmouth_unit_price,
             'bellmouth_total_price' : bellmouth_total_price,
-            'filter_unit_price' : filter_unit_price,
-            'filter_total_price' : filter_total_price,
+            'ffilter_unit_price' : ffilter_unit_price,
+            'ffilter_total_price' : ffilter_total_price,
             'direct_unit' : direct_unit,
             'direct_totals' : direct_totals,
             'maintenance_unit' : maintenance_unit,
@@ -248,7 +253,7 @@ def ffuInput(request):
         request.session['jab_unit_price'] = jab_unit_price
         request.session['assembly_unit_price'] = assembly_unit_price
         request.session['pack_unit_price'] = pack_unit_price
-        request.session['filter_unit_price'] = filter_unit_price
+        request.session['ffilter_unit_price'] = ffilter_unit_price
         request.session['direct_unit'] = direct_unit
         request.session['maintenance_unit'] = maintenance_unit
         request.session['operating_profit_unit'] = operating_profit_unit
@@ -267,7 +272,7 @@ def ffuInput(request):
         request.session['assembly_total_price'] = assembly_total_price
         request.session['pack_total_price'] = pack_total_price
         request.session['transportation_total_price'] = transportation_total_price
-        request.session['filter_total_price'] = filter_total_price
+        request.session['ffilter_total_price'] = ffilter_total_price
         request.session['direct_totals'] = direct_totals
         request.session['maintenance_totals'] = maintenance_totals
         request.session['operating_profit_totals'] = operating_profit_totals
