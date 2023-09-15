@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from FFUapp.models.Bellmouth_models import GenBellmouth, HighBellmouth
+from FFUapp.models.Bellmouth_models import ABellmouth, BBellmouth, CBellmouth, DBellmouth, EBellmouth
 
 def calculate_bellmouth_price(size, spec, motortype):
     try:    
-        if spec == "일반사양":
-            model = GenBellmouth
-        elif spec == "고사양":
-            model = HighBellmouth
+        if spec == "A 등급":
+            model = ABellmouth
+        elif spec == "B 등급":
+            model = BBellmouth
+        elif spec == "C 등급":
+            model = CBellmouth
+        elif spec == "D 등급":
+            model = DBellmouth
+        elif spec == "E 등급":
+            model = EBellmouth            
         else:
             return 0
 

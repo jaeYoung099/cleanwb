@@ -57,7 +57,6 @@ class AFan(models.Model):
 class AFilter(models.Model):
     size = models.CharField(primary_key=True, max_length=16)  # The composite primary key (size, filterstyle) found, that is not supported. The first column is selected.
     filterstyle = models.CharField(max_length=16)
-    filterpressure = models.CharField(max_length=16)
     filter_price = models.IntegerField()
 
     class Meta:
@@ -73,6 +72,23 @@ class AJab(models.Model):
     class Meta:
         managed = False
         db_table = 'a_jab'
+
+
+class AMaterialcost(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    matherialsize_width = models.FloatField()
+    matherialsize_length = models.FloatField()
+    rawmaterial_thickness = models.FloatField()
+    rawmaterial_density = models.FloatField()
+    manufacture_quantity = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+    won_per_kg = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'a_materialcost'
+        unique_together = (('item', 'size'),)
 
 
 class AMotor(models.Model):
@@ -104,6 +120,20 @@ class APack(models.Model):
         managed = False
         db_table = 'a_pack'
         unique_together = (('size', 'pack_price'),)
+
+
+class APaint(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    figure_width = models.FloatField()
+    figure_length = models.FloatField()
+    won_per_meter = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'a_paint'
+        unique_together = (('item', 'size'),)
 
 
 class AVolt(models.Model):
@@ -236,7 +266,6 @@ class BFan(models.Model):
 class BFilter(models.Model):
     size = models.CharField(primary_key=True, max_length=16)  # The composite primary key (size, filterstyle) found, that is not supported. The first column is selected.
     filterstyle = models.CharField(max_length=16)
-    filterpressure = models.CharField(max_length=16)
     filter_price = models.IntegerField()
 
     class Meta:
@@ -252,6 +281,23 @@ class BJab(models.Model):
     class Meta:
         managed = False
         db_table = 'b_jab'
+
+
+class BMaterialcost(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    matherialsize_width = models.FloatField()
+    matherialsize_length = models.FloatField()
+    rawmaterial_thickness = models.FloatField()
+    rawmaterial_density = models.FloatField()
+    manufacture_quantity = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+    won_per_kg = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'b_materialcost'
+        unique_together = (('item', 'size'),)
 
 
 class BMotor(models.Model):
@@ -283,6 +329,20 @@ class BPack(models.Model):
         managed = False
         db_table = 'b_pack'
         unique_together = (('size', 'pack_price'),)
+
+
+class BPaint(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    figure_width = models.FloatField()
+    figure_length = models.FloatField()
+    won_per_meter = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'b_paint'
+        unique_together = (('item', 'size'),)
 
 
 class BVolt(models.Model):
@@ -346,7 +406,6 @@ class CFan(models.Model):
 class CFilter(models.Model):
     size = models.CharField(primary_key=True, max_length=16)  # The composite primary key (size, filterstyle) found, that is not supported. The first column is selected.
     filterstyle = models.CharField(max_length=16)
-    filterpressure = models.CharField(max_length=16)
     filter_price = models.IntegerField()
 
     class Meta:
@@ -362,6 +421,23 @@ class CJab(models.Model):
     class Meta:
         managed = False
         db_table = 'c_jab'
+
+
+class CMaterialcost(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    matherialsize_width = models.FloatField()
+    matherialsize_length = models.FloatField()
+    rawmaterial_thickness = models.FloatField()
+    rawmaterial_density = models.FloatField()
+    manufacture_quantity = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+    won_per_kg = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'c_materialcost'
+        unique_together = (('item', 'size'),)
 
 
 class CMotor(models.Model):
@@ -393,6 +469,20 @@ class CPack(models.Model):
         managed = False
         db_table = 'c_pack'
         unique_together = (('size', 'pack_price'),)
+
+
+class CPaint(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    figure_width = models.FloatField()
+    figure_length = models.FloatField()
+    won_per_meter = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'c_paint'
+        unique_together = (('item', 'size'),)
 
 
 class CVolt(models.Model):
@@ -456,7 +546,6 @@ class DFan(models.Model):
 class DFilter(models.Model):
     size = models.CharField(primary_key=True, max_length=16)  # The composite primary key (size, filterstyle) found, that is not supported. The first column is selected.
     filterstyle = models.CharField(max_length=16)
-    filterpressure = models.CharField(max_length=16)
     filter_price = models.IntegerField()
 
     class Meta:
@@ -472,6 +561,23 @@ class DJab(models.Model):
     class Meta:
         managed = False
         db_table = 'd_jab'
+
+
+class DMaterialcost(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    matherialsize_width = models.FloatField()
+    matherialsize_length = models.FloatField()
+    rawmaterial_thickness = models.FloatField()
+    rawmaterial_density = models.FloatField()
+    manufacture_quantity = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+    won_per_kg = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'd_materialcost'
+        unique_together = (('item', 'size'),)
 
 
 class DMotor(models.Model):
@@ -503,6 +609,20 @@ class DPack(models.Model):
         managed = False
         db_table = 'd_pack'
         unique_together = (('size', 'pack_price'),)
+
+
+class DPaint(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    figure_width = models.FloatField()
+    figure_length = models.FloatField()
+    won_per_meter = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'd_paint'
+        unique_together = (('item', 'size'),)
 
 
 class DVolt(models.Model):
@@ -611,7 +731,6 @@ class EFan(models.Model):
 class EFilter(models.Model):
     size = models.CharField(primary_key=True, max_length=16)  # The composite primary key (size, filterstyle) found, that is not supported. The first column is selected.
     filterstyle = models.CharField(max_length=16)
-    filterpressure = models.CharField(max_length=16)
     filter_price = models.IntegerField()
 
     class Meta:
@@ -627,6 +746,23 @@ class EJab(models.Model):
     class Meta:
         managed = False
         db_table = 'e_jab'
+
+
+class EMaterialcost(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    matherialsize_width = models.FloatField()
+    matherialsize_length = models.FloatField()
+    rawmaterial_thickness = models.FloatField()
+    rawmaterial_density = models.FloatField()
+    manufacture_quantity = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+    won_per_kg = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'e_materialcost'
+        unique_together = (('item', 'size'),)
 
 
 class EMotor(models.Model):
@@ -658,6 +794,20 @@ class EPack(models.Model):
         managed = False
         db_table = 'e_pack'
         unique_together = (('size', 'pack_price'),)
+
+
+class EPaint(models.Model):
+    item = models.CharField(primary_key=True, max_length=32)  # The composite primary key (item, size) found, that is not supported. The first column is selected.
+    size = models.CharField(max_length=16)
+    figure_width = models.FloatField()
+    figure_length = models.FloatField()
+    won_per_meter = models.IntegerField()
+    necessary_quantity = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'e_paint'
+        unique_together = (('item', 'size'),)
 
 
 class EVolt(models.Model):
@@ -758,15 +908,16 @@ class GenMaterialcost(models.Model):
 
 
 class GenMotor(models.Model):
-    size = models.CharField(primary_key=True, max_length=16)  # The composite primary key (size, motortype, ph) found, that is not supported. The first column is selected.
+    size = models.CharField(primary_key=True, max_length=16)  # The composite primary key (size, motortype, ph, location) found, that is not supported. The first column is selected.
     motortype = models.CharField(max_length=16)
     ph = models.CharField(max_length=32)
     motor_price = models.IntegerField()
+    location = models.CharField(max_length=16)
 
     class Meta:
         managed = False
         db_table = 'gen_motor'
-        unique_together = (('size', 'motortype', 'ph'),)
+        unique_together = (('size', 'motortype', 'ph', 'location'),)
 
 
 class GenNct(models.Model):

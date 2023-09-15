@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from FFUapp.models.Controller_models import GenController, HighController
+from FFUapp.models.Controller_models import AController, BController, CController, DController, EController
 
 def calculate_controller_price(size, spec, motortype, ph):
     try:    
-        if spec == "일반사양":
-            model = GenController
-        elif spec == "고사양":
-            model = HighController
+        if spec == "A 등급":
+            model = AController
+        elif spec == "B 등급":
+            model = BController
+        elif spec == "C 등급":
+            model = CController
+        elif spec == "D 등급":
+            model = DController
+        elif spec == "E 등급":
+            model = EController
         else:
             return 0
 

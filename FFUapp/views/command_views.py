@@ -30,9 +30,8 @@ BELLMOUTH = "BELLMOUTH (보호망포함)"
 일반사양 = "일반사양"
 고사양 = "고사양"
 
-
 # OUTPUT 항목과 연관된 변수
-def get_price_for_item(item_name, size, spec, ph, quantity=None, motortype=None, location=None, filterpressure=None, filterstyle=None, **kwargs):
+def get_price_for_item(item_name, size, spec, ph, quantity=None, motortype=None, location=None, filterstyle=None, **kwargs):
     try:
         if item_name == 운반비:
             price_dict = calculate_moveprice(location=location, size=size, quantity=quantity)
@@ -75,7 +74,7 @@ def get_price_for_item(item_name, size, spec, ph, quantity=None, motortype=None,
             return calculate_bellmouth_price(size, spec, motortype=motortype)
         
         elif item_name == 필터:
-            return calculate_ffilter_price(size, filterstyle=filterstyle, filterpressure=filterpressure)
+            return calculate_ffilter_price(size, filterstyle=filterstyle)
 
         else:
             return 0
@@ -96,7 +95,6 @@ def ffuInput(request):
         maintenance = request.POST.get('maintenance', '1')
         operating_profit = request.POST.get('operating_profit', '1')
         filterstyle = request.POST.get('filterstyle')
-        filterpressure = request.POST.get('filterpressure')
         quantity_str = request.POST.get('quantity', '1')
         try:
             quantity = int(quantity_str)
@@ -159,7 +157,7 @@ def ffuInput(request):
         bellmouth_total_price = bellmouth_unit_price * quantity
 
         # FILTER 단가, 합계 계산
-        ffilter_unit_price = round(calculate_ffilter_price(size, filterstyle=filterstyle, filterpressure=filterpressure))
+        ffilter_unit_price = round(calculate_ffilter_price(size, spec, filterstyle=filterstyle))
         ffilter_total_price = ffilter_unit_price * quantity
 
         # 합계 계산

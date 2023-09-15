@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from FFUapp.models.Assembly_models import GenAssembly, HighAssembly
+from FFUapp.models.Assembly_models import AAssembly, BAssembly, CAssembly, DAssembly, EAssembly
 
 def calculate_assembly_price(size, spec):
     try:    
-        if spec == "일반사양":
-            model = GenAssembly
-        elif spec == "고사양":
-            model = HighAssembly
+        if spec == "A 등급":
+            model = AAssembly
+        elif spec == "B 등급":
+            model = BAssembly
+        elif spec == "C 등급":
+            model = CAssembly
+        elif spec == "D 등급":
+            model = DAssembly
+        elif spec == "E 등급":
+            model = EAssembly                           
         else:
             return 0
 
