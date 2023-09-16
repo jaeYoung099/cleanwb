@@ -169,7 +169,6 @@ def ffuInput(request):
         direct_totals = ffilter_total_price + subtotal_totals
 
         # 간접비 계산
-
         try:
             maintenance = float(maintenance)
         except ValueError:

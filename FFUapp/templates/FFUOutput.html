@@ -1,233 +1,244 @@
-{% load static %}
-{% load humanize %}
+{% load static %} {% load humanize %}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>FFU Quotation</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A300%2C400%2C500%2C600%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans%3A600"/>
-  <link rel="stylesheet" href="{% static 'css/output.css' %}"/>
-</head>
-<body>
-<div class="desktop-5-rjb">
-  <div class="auto-group-qsuk-kKB">
-    <p class="item--ySq">단가</p>
-    <p class="item--eYy">품명</p>
-    <p class="item--Lgh">합계</p>
-    <p class="item--rQ9">수량</p>
-    <p class="item--mX7">품명</p>
-    <div class="rectangle-VtM">
-    </div>
-    <p class="al-spcc--DpM">
-    자재비 (AL, SPCC 외)
-    <br/>
-    
-    </p>
-    <p class="item-1-Jqo">
-    {{ quantity|intcomma }}
-    {% comment %} 자재비 수량 {% endcomment %}
-    <br/>
-    
-    </p>
-    <p class="item-760000-1ER">￦ {{ materialcost_unit_price|intcomma }}</p>
-    {% comment %} 자재비 단가 {% endcomment %}
-    <p class="item-3000000-VvH">￦ {{ materialcost_total_price|intcomma }}</p>
-    {% comment %} 자재비 합계 {% endcomment %}
-    <p class="item-2-nuP">{{ quantity|intcomma }}</p>
-    {% comment %} 도장비 수량 {% endcomment %}
-    <p class="item-760000-6v5">￦ {{ paint_unit_price|intcomma }}</p>
-    {% comment %} 도장비 단가 {% endcomment %}
-    <p class="item-3000000-opV">￦ {{ paint_total_price|intcomma }}</p>
-    {% comment %} 도장비 합계 {% endcomment %}
-    <p class="item-3-HzZ">{{ quantity|intcomma }}</p>
-    {% comment %} nct 수량 {% endcomment %}
-    <p class="item-760000-meq">￦ {{ nct_unit_price|intcomma }}</p>
-    {% comment %} nct 단가 {% endcomment %}
-    <p class="item-3000000-1p5">￦ {{ nct_total_price|intcomma }}</p>
-    {% comment %} nct 합계 {% endcomment %}
-    <p class="item-4-s5b">{{ quantity|intcomma }}</p>
-    {% comment %} 모터 수량 {% endcomment %}
-    <p class="item-760000-LE5">￦ {{ motor_unit_price|intcomma }}</p>
-    {% comment %} 모터 단가 {% endcomment %}
-    <p class="item-3000000-BVb">￦ {{ motor_total_price|intcomma }}</p>
-    {% comment %} 모터 합계 {% endcomment %}
-    <p class="item-5-rrd">{{ quantity|intcomma }}</p>
-    {% comment %} 컨트롤러 수량 {% endcomment %}
-    <p class="item-7-NKB">{{ quantity|intcomma }}</p>
-    {% comment %} 벨마우스 수량 {% endcomment %}
-    <p class="item-760000-tHX">￦ {{ bellmouth_unit_price|intcomma }}</p>
-    {% comment %} 벨마우스 단가 {% endcomment %}
-    <p class="item-3000000-C3K">￦ {{ bellmouth_total_price|intcomma }}</p>
-    {% comment %} 벨마우스 합계 {% endcomment %}
-    <p class="item-8-45X">{{ quantity|intcomma }}</p>
-    {% comment %} 볼트 리벳 수량 {% endcomment %}
-    <p class="item-760000-8r5">￦ {{ volt_unit_price|intcomma }}</p>
-    {% comment %} 볼트 리벳 단가 {% endcomment %}
-    <p class="item-3000000-cFT">￦ {{ volt_total_price|intcomma }}</p>
-    {% comment %} 볼트 리벳 합계 {% endcomment %}
-    <p class="item-10-U2m">{{ quantity|intcomma }}</p>
-    {% comment %} 조립인건비 수량 {% endcomment %}
-    <p class="item-760000-wh3">￦ {{ assembly_unit_price|intcomma }}</p>
-    {% comment %} 조립인건비 단가 {% endcomment %}
-    <p class="item-3000000-Qad">￦ {{ assembly_total_price|intcomma }}</p>
-    {% comment %} 조립인건비 합계 {% endcomment %}
-    <p class="item-11-Gcq">{{ quantity|intcomma }}</p>
-    {% comment %} 포장팔렛트 수량 {% endcomment %}
-    <p class="item-760000-vhP">￦ {{ pack_unit_price|intcomma }}</p>
-    {% comment %} 포장팔렛트 단가 {% endcomment %}
-    <p class="item-3000000-y9s">￦ {{ pack_total_price|intcomma }}</p>
-    {% comment %} 포장팔렛트 합계 {% endcomment %}
-    <p class="item--pgH">-</p>
-    <p class="item-760000-gTb">-</p>
-    <p class="item-3000000-yBo">￦ {{ transportation_total_price|intcomma }}</p>
-    {% comment %} 운반비 합계 {% endcomment %}
-    <p class="item-13-5Eq">{{ quantity|intcomma }}</p>
-    {% comment %} 필터 수량 {% endcomment %}
-    <p class="item-760000-zMo">￦ {{ ffilter_unit_price|intcomma }}</p>
-    {% comment %} 필터 단가 {% endcomment %}
-    <p class="item-3000000-Unm">￦ {{ ffilter_total_price|intcomma }}</p>
-    {% comment %} 필터 합계 {% endcomment %}
-    <p class="item-14-P93">{{ quantity|intcomma }}</p>
-    {% comment %} 관리비 수량 {% endcomment %}
-    <p class="item-760000-5Xf">￦ {{ maintenance_unit|intcomma }}</p>
-    {% comment %} 관리비 단가 {% endcomment %}
-    <p class="item-3000000-Ap1">￦ {{ maintenance_totals|intcomma }}</p>
-    {% comment %} 관리비 합계 {% endcomment %}
-    <p class="item-15-sTX">{{ quantity|intcomma }}</p>
-    {% comment %} 영업이익 수량 {% endcomment %}
-    <p class="item-760000-aMw">￦ {{ operating_profit_unit|intcomma }}</p>
-    {% comment %} 영업이익 단가 {% endcomment %}
-    <p class="item-3000000-srq">￦ {{ operating_profit_totals|intcomma }}</p>
-    {% comment %} 영업이익 합계 {% endcomment %}
-    <p class="item-760000-aWM">￦ {{ controller_unit_price|intcomma }}</p>
-    {% comment %} 컨트롤러 단가 {% endcomment %}
-    <p class="item-3000000-gZP">￦ {{ controller_total_price|intcomma }}</p>
-    {% comment %} 컨트롤러 합계 {% endcomment %}
-    <p class="item-6-PTo">{{ quantity|intcomma }}</p>
-    {% comment %} 팬 수량 {% endcomment %}
-    <p class="item-760000-4pq">￦ {{ fan_unit_price|intcomma }}</p>
-    {% comment %} 팬 단가 {% endcomment %}
-    <p class="item-3000000-KEy">￦ {{ fan_total_price|intcomma }}</p>
-    {% comment %} 팬 합계 {% endcomment %}
-    <p class="item--QXK">단가</p>
-    <p class="item--Jsb">합계</p>
-    <p class="item--RSR">수량</p>
-    <p class="item-9-jCD">{{ quantity|intcomma }}</p>
-    {% comment %} 포장용잡자재 수량 {% endcomment %}
-    <p class="item-760000-doP">￦ {{ jab_unit_price|intcomma }}</p>
-    {% comment %} 포장용잡자재 단가 {% endcomment %}
-    <p class="item-3000000-9Fw">￦ {{ jab_total_price|intcomma }}</p>
-    {% comment %} 포장용 잡자재 합계 {% endcomment %}
-    <p class="item--eyP">포장용 잡자재</p>
-    <p class="item--Mcu">조립인건비</p>
-    <p class="item--TA9">포장팔렛트 </p>
-    <p class="item--YxH">운반비 <span class="tooltip">TRANSPORTATION 참고</span></p>
-    <p class="filter-TpM">FILTER</p>
-    <p class="item--ynh">관리비 </p>
-    <p class="item--HYV">영업이익 </p>
-    <p class="item--Bds">도장비 </p>
-    <p class="nct--5z9">NCT 가공비</p>
-    <p class="motor-PV3">MOTOR</p>
-    <p class="fan-Jc1">FAN</p>
-    <p class="item--pqF">컨트롤러</p>
-    <p class="bellmouth--8L9">BELLMOUTH (보호망 포함)</p>
-    <p class="item--pyf">볼트 &amp; 리벳</p>
-  </div>
-  <div class="auto-group-xlbs-LSD">
-    <img class="item-1-1oF" src="{% static 'images/-6TB.png' %}"/>
-    <div class="button-J1f" onclick="downloadExcel()" style="user-select: none;">
-      <img class="iconly-DuK" src="{% static 'images/iconly-Hof.png' %}"/>
-      <div class="button-xc1">Excel</div>
-    </div>
-  </div>
-  <p class="quotation--RkV">
-  Quotation |
-  <br/>
-  
-  </p>
-  <p class="sk--LcZ">
-  {{ businessOwner }}
-  {% comment %} 현장명 {% endcomment %}
-  <br/>
-  
-  </p>
-  <p class="bldc-kwB">
-  유형 : {{ motortype }}
-  {% comment %} 모터 종류 {% endcomment %}
-  <br/>
-  
-  <br/>
-  
-  <br/>
-  
-  <br/>
-  
-  </p>
-  <p class="ffu-info-4ws">FFU info</p>
-  <p class="transportation-PDT">Transportation</p>
-  <p class="ton--hE9">
-  1 ton :  
-  <br/>
-  
-  <br/>
-  
-  <br/>
-  
-  <br/>
-  
-  </p>
-  <p class="item-10--c6D">{{ load_data.one_carnum|intcomma }} 대</p>
-  {% comment %} 1톤 대수 {% endcomment %}
-  <div class="auto-group-wlqh-KFX">
-    <p class="item-500000000-S5F">￦ {{ direct_totals|intcomma }}</p>
-    {% comment %} 직접비 총계 {% endcomment %}
-    <p class="unit-total-XMb">Direct Cost</p>
-    <p class="item-6280000000-Emo">￦ {{ indirect_totals|intcomma }}</p>
-    {% comment %} 간접비 통계 {% endcomment %}
-    <p class="filter-total-wAR">Indirect Cost</p>
-  </div>
-  <img class="icon-ionicons-outline-arrow-back-outline-QJu" src="{% static 'images/icon-ionicons-outline-arrow-back-outline-y2H.png' %}" onclick="goBack()"/>
-  <p class="total-7z1">TOTAL</p>
-  <div class="auto-group-egwk-cQy">
-    <p class="item-6780000000-wTF">￦ {{ aggregate_totals|intcomma }}</p>
-    {% comment %} 총 합계 {% endcomment %}
-    <div class="rectangle-BcV">
-    </div>
-  </div>
-  <p class="item-12001200-tmo">규격 : {{ size }}</p>
-  {% comment %} 규격 {% endcomment %}
-  <p class="item--n6V">
-  지역 : {{ location }}
-  {% comment %} 지역 {% endcomment %}
-  <br/>
-  
-  </p>
-  <p class="item-4--FVs">{{ load_data.five_carnum|intcomma }} 대 </p>
-  {% comment %} 5톤 대수 {% endcomment %}
-  <p class="ton--x9P">5 ton :</p>
-  <div class="auto-group-bcft-FuB">
-    <p class="ton--bCM">11 ton :</p>
-    <p class="item-5--j3f">{{ load_data.ele_carnum|intcomma }} 대</p>
-    {% comment %} 11톤 대수 {% endcomment %}
-  </div>
-</div>
-<script>
-  function downloadExcel() {
-    var excelURL = "{% url 'download_excel' %}";
-    window.location.href = excelURL;
-  }
-</script>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>FFU Quotation</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C500%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A300%2C400%2C500%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Work+Sans%3A600"
+    />
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+  </head>
+  <body>
+    <div class="desktop-5-rjb">
+      <div class="auto-group-qsuk-kKB">
+        <p class="item--ySq">단가</p>
+        <p class="item--eYy">품명</p>
+        <p class="item--Lgh">합계</p>
+        <p class="item--rQ9">수량</p>
+        <p class="item--mX7">품명</p>
+        <div class="rectangle-VtM"></div>
+        <p class="al-spcc--DpM">
+          자재비 (AL, SPCC 외)
+          <br />
+        </p>
+        <p class="item-1-Jqo">
+          {{ quantity|intcomma }} {% comment %} 자재비 수량 {% endcomment %}
+          <br />
+        </p>
+        <p class="item-760000-1ER">￦ {{ materialcost_unit_price|intcomma }}</p>
+        {% comment %} 자재비 단가 {% endcomment %}
+        <p class="item-3000000-VvH">
+          ￦ {{ materialcost_total_price|intcomma }}
+        </p>
+        {% comment %} 자재비 합계 {% endcomment %}
+        <p class="item-2-nuP">{{ quantity|intcomma }}</p>
+        {% comment %} 도장비 수량 {% endcomment %}
+        <p class="item-760000-6v5">￦ {{ paint_unit_price|intcomma }}</p>
+        {% comment %} 도장비 단가 {% endcomment %}
+        <p class="item-3000000-opV">￦ {{ paint_total_price|intcomma }}</p>
+        {% comment %} 도장비 합계 {% endcomment %}
+        <p class="item-3-HzZ">{{ quantity|intcomma }}</p>
+        {% comment %} nct 수량 {% endcomment %}
+        <p class="item-760000-meq">￦ {{ nct_unit_price|intcomma }}</p>
+        {% comment %} nct 단가 {% endcomment %}
+        <p class="item-3000000-1p5">￦ {{ nct_total_price|intcomma }}</p>
+        {% comment %} nct 합계 {% endcomment %}
+        <p class="item-4-s5b">{{ quantity|intcomma }}</p>
+        {% comment %} 모터 수량 {% endcomment %}
+        <p class="item-760000-LE5">￦ {{ motor_unit_price|intcomma }}</p>
+        {% comment %} 모터 단가 {% endcomment %}
+        <p class="item-3000000-BVb">￦ {{ motor_total_price|intcomma }}</p>
+        {% comment %} 모터 합계 {% endcomment %}
+        <p class="item-5-rrd">{{ quantity|intcomma }}</p>
+        {% comment %} 컨트롤러 수량 {% endcomment %}
+        <p class="item-7-NKB">{{ quantity|intcomma }}</p>
+        {% comment %} 벨마우스 수량 {% endcomment %}
+        <p class="item-760000-tHX">￦ {{ bellmouth_unit_price|intcomma }}</p>
+        {% comment %} 벨마우스 단가 {% endcomment %}
+        <p class="item-3000000-C3K">￦ {{ bellmouth_total_price|intcomma }}</p>
+        {% comment %} 벨마우스 합계 {% endcomment %}
+        <p class="item-8-45X">{{ quantity|intcomma }}</p>
+        {% comment %} 볼트 리벳 수량 {% endcomment %}
+        <p class="item-760000-8r5">￦ {{ volt_unit_price|intcomma }}</p>
+        {% comment %} 볼트 리벳 단가 {% endcomment %}
+        <p class="item-3000000-cFT">￦ {{ volt_total_price|intcomma }}</p>
+        {% comment %} 볼트 리벳 합계 {% endcomment %}
+        <p class="item-10-U2m">{{ quantity|intcomma }}</p>
+        {% comment %} 조립인건비 수량 {% endcomment %}
+        <p class="item-760000-wh3">￦ {{ assembly_unit_price|intcomma }}</p>
+        {% comment %} 조립인건비 단가 {% endcomment %}
+        <p class="item-3000000-Qad">￦ {{ assembly_total_price|intcomma }}</p>
+        {% comment %} 조립인건비 합계 {% endcomment %}
+        <p class="item-11-Gcq">{{ quantity|intcomma }}</p>
+        {% comment %} 포장팔렛트 수량 {% endcomment %}
+        <p class="item-760000-vhP">￦ {{ pack_unit_price|intcomma }}</p>
+        {% comment %} 포장팔렛트 단가 {% endcomment %}
+        <p class="item-3000000-y9s">￦ {{ pack_total_price|intcomma }}</p>
+        {% comment %} 포장팔렛트 합계 {% endcomment %}
+        <p class="item--pgH">-</p>
+        <p class="item-760000-gTb">-</p>
+        <p class="item-3000000-yBo">
+          ￦ {{ transportation_total_price|intcomma }}
+        </p>
+        {% comment %} 운반비 합계 {% endcomment %}
+        <p class="item-13-5Eq">{{ quantity|intcomma }}</p>
+        {% comment %} 필터 수량 {% endcomment %}
+        <p class="item-760000-zMo">￦ {{ ffilter_unit_price|intcomma }}</p>
+        {% comment %} 필터 단가 {% endcomment %}
+        <p class="item-3000000-Unm">￦ {{ ffilter_total_price|intcomma }}</p>
+        {% comment %} 필터 합계 {% endcomment %}
+        <p class="item-14-P93">{{ quantity|intcomma }}</p>
+        {% comment %} 관리비 수량 {% endcomment %}
+        <p class="item-760000-5Xf">￦ {{ maintenance_unit|intcomma }}</p>
+        {% comment %} 관리비 단가 {% endcomment %}
+        <p class="item-3000000-Ap1">￦ {{ maintenance_totals|intcomma }}</p>
+        {% comment %} 관리비 합계 {% endcomment %}
+        <p class="item-15-sTX">{{ quantity|intcomma }}</p>
+        {% comment %} 영업이익 수량 {% endcomment %}
+        <p class="item-760000-aMw">￦ {{ operating_profit_unit|intcomma }}</p>
+        {% comment %} 영업이익 단가 {% endcomment %}
+        <p class="item-3000000-srq">
+          ￦ {{ operating_profit_totals|intcomma }}
+        </p>
+        {% comment %} 영업이익 합계 {% endcomment %}
+        <p class="item-760000-aWM">￦ {{ controller_unit_price|intcomma }}</p>
+        {% comment %} 컨트롤러 단가 {% endcomment %}
+        <p class="item-3000000-gZP">￦ {{ controller_total_price|intcomma }}</p>
+        {% comment %} 컨트롤러 합계 {% endcomment %}
+        <p class="item-6-PTo">{{ quantity|intcomma }}</p>
+        {% comment %} 팬 수량 {% endcomment %}
+        <p class="item-760000-4pq">￦ {{ fan_unit_price|intcomma }}</p>
+        {% comment %} 팬 단가 {% endcomment %}
+        <p class="item-3000000-KEy">￦ {{ fan_total_price|intcomma }}</p>
+        {% comment %} 팬 합계 {% endcomment %}
+        <p class="item--QXK">단가</p>
+        <p class="item--Jsb">합계</p>
+        <p class="item--RSR">수량</p>
+        <p class="item-9-jCD">{{ quantity|intcomma }}</p>
+        {% comment %} 포장용잡자재 수량 {% endcomment %}
+        <p class="item-760000-doP">￦ {{ jab_unit_price|intcomma }}</p>
+        {% comment %} 포장용잡자재 단가 {% endcomment %}
+        <p class="item-3000000-9Fw">￦ {{ jab_total_price|intcomma }}</p>
+        {% comment %} 포장용 잡자재 합계 {% endcomment %}
+        <p class="item--eyP">포장용 잡자재</p>
+        <p class="item--Mcu">조립인건비</p>
+        <p class="item--TA9">포장팔렛트</p>
+        <p class="item--YxH">
+          운반비 <span class="tooltip">TRANSPORTATION 참고</span>
+        </p>
+        <p class="filter-TpM">FILTER</p>
+        <p class="item--ynh">관리비</p>
+        <p class="item--HYV">영업이익</p>
+        <p class="item--Bds">도장비</p>
+        <p class="nct--5z9">NCT 가공비</p>
+        <p class="motor-PV3">MOTOR</p>
+        <p class="fan-Jc1">FAN</p>
+        <p class="item--pqF">컨트롤러</p>
+        <p class="bellmouth--8L9">BELLMOUTH (보호망 포함)</p>
+        <p class="item--pyf">볼트 &amp; 리벳</p>
+      </div>
+      <div class="auto-group-xlbs-LSD">
+        <img class="item-1-1oF" src="{% static 'images/-6TB.png' %}" />
+        <div
+          class="button-J1f"
+          onclick="downloadExcel()"
+          style="user-select: none"
+        >
+          <img class="iconly-DuK" src="{% static 'images/iconly-Hof.png' %}" />
+          <div class="button-xc1">Excel</div>
+        </div>
+      </div>
+      <p class="quotation--RkV">
+        Quotation |
+        <br />
+      </p>
+      <p class="sk--LcZ">
+        {{ businessOwner }} {% comment %} 현장명 {% endcomment %}
+        <br />
+      </p>
+      <p class="bldc-kwB">
+        유형 : {{ motortype }} {% comment %} 모터 종류 {% endcomment %}
+        <br />
 
-<script>
-  function goBack() {
-    var backURL = "http://127.0.0.1:8000/ffu/FFUInput/";
-    window.location.href = backURL;
-  }
-</script>
-</body>
+        <br />
 
+        <br />
+
+        <br />
+      </p>
+      <p class="ffu-info-4ws">FFU info</p>
+      <p class="transportation-PDT">Transportation</p>
+      <p class="ton--hE9">
+        1 ton :
+        <br />
+
+        <br />
+
+        <br />
+
+        <br />
+      </p>
+      <p class="item-10--c6D">{{ load_data.one_carnum|intcomma }} 대</p>
+      {% comment %} 1톤 대수 {% endcomment %}
+      <div class="auto-group-wlqh-KFX">
+        <p class="item-500000000-S5F">￦ {{ direct_totals|intcomma }}</p>
+        {% comment %} 직접비 총계 {% endcomment %}
+        <p class="unit-total-XMb">Direct Cost</p>
+        <p class="item-6280000000-Emo">￦ {{ indirect_totals|intcomma }}</p>
+        {% comment %} 간접비 통계 {% endcomment %}
+        <p class="filter-total-wAR">Indirect Cost</p>
+      </div>
+      <img
+        class="icon-ionicons-outline-arrow-back-outline-QJu"
+        src="{% static 'images/icon-ionicons-outline-arrow-back-outline-y2H.png' %}"
+        onclick="goBack()"
+      />
+      <p class="total-7z1">TOTAL</p>
+      <div class="auto-group-egwk-cQy">
+        <p class="item-6780000000-wTF">￦ {{ aggregate_totals|intcomma }}</p>
+        {% comment %} 총 합계 {% endcomment %}
+        <div class="rectangle-BcV"></div>
+      </div>
+      <p class="item-12001200-tmo">규격 : {{ size }}</p>
+      {% comment %} 규격 {% endcomment %}
+      <p class="item--n6V">
+        지역 : {{ location }} {% comment %} 지역 {% endcomment %}
+        <br />
+      </p>
+      <p class="item-4--FVs">{{ load_data.five_carnum|intcomma }} 대</p>
+      {% comment %} 5톤 대수 {% endcomment %}
+      <p class="ton--x9P">5 ton :</p>
+      <div class="auto-group-bcft-FuB">
+        <p class="ton--bCM">11 ton :</p>
+        <p class="item-5--j3f">{{ load_data.ele_carnum|intcomma }} 대</p>
+        {% comment %} 11톤 대수 {% endcomment %}
+      </div>
+    </div>
+    <script>
+      function downloadExcel() {
+        var excelURL = "{% url 'download_excel' %}";
+        window.location.href = excelURL;
+      }
+    </script>
+
+    <script>
+      function goBack() {
+        var backURL = "http://127.0.0.1:8000/ffu/FFUInput/";
+        window.location.href = backURL;
+      }
+    </script>
+  </body>
+</html>

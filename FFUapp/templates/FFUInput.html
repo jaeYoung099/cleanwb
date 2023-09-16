@@ -1,51 +1,82 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
-    <link rel="stylesheet" href="{% static "css/input.css" %}" type="text/css"> 
+  <head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <link rel="stylesheet" href="{% static "css/input.css" %}" type="text/css">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="generator" content="Hugo 0.115.4">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="generator" content="Hugo 0.115.4" />
     <title>FFU Quotation</title>
 
-<link rel="canonical" href="https://getbootstrap.kr/docs/5.3/examples/sidebars/">
+    <link
+      rel="canonical"
+      href="https://getbootstrap.kr/docs/5.3/examples/sidebars/"
+    />
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#712cf9">
+    <link
+      rel="apple-touch-icon"
+      href="/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.3/assets/img/favicons/favicon-32x32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.3/assets/img/favicons/favicon-16x16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json" />
+    <link
+      rel="mask-icon"
+      href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+      color="#712cf9"
+    />
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="theme-color" content="#712cf9" />
 
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap");
 
-<style>
-
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap');
-
-    body {
-        background-color: #E6E6E6!important;
+      body {
+        background-color: #e6e6e6 !important;
         margin: 0;
         padding: 0;
-    }
+      }
 
-    .bd-placeholder-img {
+      .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
-    }
+      }
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -56,10 +87,11 @@
       .b-example-divider {
         width: 100%;
         height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
         border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
       }
 
       .b-example-vr {
@@ -69,7 +101,7 @@
       }
 
       .bi {
-        vertical-align: -.125em;
+        vertical-align: -0.125em;
         fill: currentColor;
       }
 
@@ -111,66 +143,65 @@
         z-index: 1500;
       }
       .fs-4 {
-        margin-left: 20px; 
+        margin-left: 20px;
         margin-top: 1px;
         font-size: 23px;
         font-weight: 500;
-        color: #FFF;
-        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
         display: flex;
         align-items: center;
       }
 
-    .b-example-divider {
+      .b-example-divider {
         width: 1%;
-        background-color: #E6E6E6;
+        background-color: #e6e6e6;
         box-shadow: none;
-    }
-    .nav-link:hover {
-      background-color: #2E64FE; /* 원하는 배경색으로 변경 */
-      color: #FFF; /* 원하는 텍스트 색상으로 변경 */
-    }
+      }
+      .nav-link:hover {
+        background-color: #2e64fe; /* 원하는 배경색으로 변경 */
+        color: #fff; /* 원하는 텍스트 색상으로 변경 */
+      }
 
-    .nav-link[aria-current="page"] {
-      background-color: #2E64FE; /* 원하는 배경색으로 변경 */
-      color: #FFF; /* 원하는 텍스트 색상으로 변경 */
-    } 
-    .nav-link {
-      margin-top: 3px;
-    }
+      .nav-link[aria-current="page"] {
+        background-color: #2e64fe; /* 원하는 배경색으로 변경 */
+        color: #fff; /* 원하는 텍스트 색상으로 변경 */
+      }
+      .nav-link {
+        margin-top: 3px;
+      }
 
-    #businessOwner[type="text"]{
-      width:260px;
-      height:30px;
-      border-top:none;
-      border-left:none;
-      border-right:none;
-      border-bottom:2px solid #ccc;
-      font-family:Noto Sans KR;
-      background-color: #E6E6E6;
-      margin-top:15px;
+      #businessOwner[type="text"] {
+        width: 260px;
+        height: 30px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2px solid #ccc;
+        font-family: Noto Sans KR;
+        background-color: #e6e6e6;
+        margin-top: 15px;
       }
 
       .box1 label {
-        font-family:Noto Sans KR;
-        margin-top:20px;
+        font-family: Noto Sans KR;
+        margin-top: 20px;
         font-size: 15px; /* 원하는 크기로 조정하세요 */
-    }
-    
-  
+      }
+
       .parent {
         width: 100%;
         display: flex;
         flex-direction: row;
       }
-    
+
       form {
         width: 800px;
         font-size: 15px;
         font-family: Noto Sans KR;
         margin: 0 auto; /* 가로 가운데 정렬 */
       }
-  
+
       .first-box {
         display: flex;
         flex-direction: row;
@@ -179,7 +210,6 @@
         height: 100px;
         font-family: Noto Sans KR;
         box-sizing: border-box;
-        
       }
       /* 마지막 컨텐츠에는 마진을 주지 않기 위한 스타일 */
       .first-box:last-child {
@@ -190,386 +220,453 @@
         margin-left: 10px; /* 첫 번째 컨텐츠의 시작 부분에 왼쪽 마진 추가 */
       }
 
-    
-    input {
-      width:100px;
-      height:25px;
-      font-size:15px;
-      background-color: #E6E6E6;
-    }
+      input {
+        width: 100px;
+        height: 25px;
+        font-size: 15px;
+        background-color: #e6e6e6;
+      }
 
-    select, input[type="number"]{
-      width: 260px; /* 셀렉트 박스 가로 크기 조정 */
-      height: 40px; /* 셀렉트 박스 세로 크기 조정 */
-      border: 1px solid #ccc;
-      outline: none;
-      background-color: #E6E6E6;
-      box-sizing: border-box;
-      margin-top: 10px; /* 여백 추가 */
-      margin-bottom: 10px; /* 여백 추가 */
-      font-weight: 350;
-      padding: 5px;
-    }
+      select,
+      input[type="number"] {
+        width: 260px; /* 셀렉트 박스 가로 크기 조정 */
+        height: 40px; /* 셀렉트 박스 세로 크기 조정 */
+        border: 1px solid #ccc;
+        outline: none;
+        background-color: #e6e6e6;
+        box-sizing: border-box;
+        margin-top: 10px; /* 여백 추가 */
+        margin-bottom: 10px; /* 여백 추가 */
+        font-weight: 350;
+        padding: 5px;
+      }
 
-    .wind-container {
-      width: 260px;
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-    }
-  
-    #windSpeed {
-      width: 68%;
-      height: 40px;
-      border: 1px solid #ccc;
-      outline: none;
-      background-color: #E6E6E6;
-      box-sizing: border-box;
-      margin-right: 5px;
-      padding: 5px;
-      font-weight: 300;
+      .wind-container {
+        width: 260px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+      }
 
-    }
-  
-    #windSpeedUnit {
-      width: 30%;
-      height: 40px;
-      border: 1px solid #ccc;
-      outline: none;
-      background-color: #E6E6E6;
-      box-sizing: border-box;
-      padding: 5px;
-      font-weight: 300;
-    }
+      #windSpeed {
+        width: 68%;
+        height: 40px;
+        border: 1px solid #ccc;
+        outline: none;
+        background-color: #e6e6e6;
+        box-sizing: border-box;
+        margin-right: 5px;
+        padding: 5px;
+        font-weight: 300;
+      }
 
-    h3 {
-      margin-top: 30px!important;
-    }
-    h4 {
-      margin-top: 20px;
-      font-weight: 500;
-    }
+      #windSpeedUnit {
+        width: 30%;
+        height: 40px;
+        border: 1px solid #ccc;
+        outline: none;
+        background-color: #e6e6e6;
+        box-sizing: border-box;
+        padding: 5px;
+        font-weight: 300;
+      }
 
-    .sub-botton {
+      h3 {
+        margin-top: 30px !important;
+        font-size:40px
+      }
+      h4 {
+        margin-top: 15px;
+        font-weight: 500;
+      }
+
+      .sub-botton {
         flex: 1; /* 남은 공간을 동일하게 차지하도록 설정 */
         padding: 10px; /* 내용과 컨테이너 사이의 여백 */
-    }
-  
-    .spacer {
-        flex: 2; /* 가운데 공란의 크기를 조절 */
-    }
+      }
 
-    .box1 {
+      .spacer {
+        flex: 2; /* 가운데 공란의 크기를 조절 */
+      }
+
+      .box1 {
         display: flex;
         align-items: center; /* 수직 가운데 정렬 */
         margin-bottom: 30px;
-    }
+      }
 
-    /* 제출 버튼 관련 */
-    .sub-button input[type="submit"] {
+      /* 제출 버튼 관련 */
+      .sub-button input[type="submit"] {
         opacity: 1; /* 변경 */
         /* position: absolute; */ /* 제거 */
         cursor: pointer;
-    }
+      }
 
-    .sub-button {
+      .sub-button {
         text-align: center;
         margin-top: 20px;
         margin-bottom: 40px;
-    }
+      }
 
-    .custom-button {
+      .custom-button {
         background: none;
         border: none;
         cursor: pointer;
-    }
+      }
 
-    .custom-button img {
+      .custom-button img {
         width: 150px;
         height: auto;
-    }
+      }
 
+      select,
+      input[type="number"] {
+        width: 260px; /* 셀렉트 박스 가로 크기 조정 */
+        height: 40px; /* 셀렉트 박스 세로 크기 조정 */
+        border: 1px solid #ccc;
+        outline: none;
+        background-color: #e6e6e6;
+        box-sizing: border-box;
+        margin-top: 10px; /* 여백 추가 */
+        margin-bottom: 10px; /* 여백 추가 */
+        font-weight: 350;
+        padding: 5px;
+      }
+    </style>
 
-  select, input[type="number"]{
-    width: 260px; /* 셀렉트 박스 가로 크기 조정 */
-    height: 40px; /* 셀렉트 박스 세로 크기 조정 */
-    border: 1px solid #ccc;
-    outline: none;
-    background-color: #E6E6E6;
-    box-sizing: border-box;
-    margin-top: 10px; /* 여백 추가 */
-    margin-bottom: 10px; /* 여백 추가 */
-    font-weight: 350;
-    padding: 5px;
-  }
-
-</style>
-
-    
     <!-- Custom styles for this template -->
-    <link href="sidebars.css" rel="stylesheet">
+    <link href="sidebars.css" rel="stylesheet" />
   </head>
   <body>
-    
-<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-  <symbol id="home" viewBox="0 0 16 16">
-    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
-  </symbol>
-  <symbol id="speedometer2" viewBox="0 0 16 16">
-    <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
-    <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
-  </symbol>
-  <symbol id="table" viewBox="0 0 16 16">
-    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
-  </symbol>
-  <symbol id="people-circle" viewBox="0 0 16 16">
-    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-  </symbol>
-  <symbol id="grid" viewBox="0 0 16 16">
-    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
-  </symbol>
-</svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="home" viewBox="0 0 16 16">
+        <path
+          d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"
+        />
+      </symbol>
+      <symbol id="speedometer2" viewBox="0 0 16 16">
+        <path
+          d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"
+        />
+      </symbol>
+      <symbol id="table" viewBox="0 0 16 16">
+        <path
+          d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"
+        />
+      </symbol>
+      <symbol id="people-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        <path
+          fill-rule="evenodd"
+          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+        />
+      </symbol>
+      <symbol id="grid" viewBox="0 0 16 16">
+        <path
+          d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"
+        />
+      </symbol>
+    </svg>
 
-<main class="d-flex flex-nowrap">
-  <h1 class="visually-hidden">FFU model</h1>
+    <main class="d-flex flex-nowrap">
+      <h1 class="visually-hidden">FFU model</h1>
 
-  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-      <span class="fs-4">
-        FFU Model</span>
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link text-white" onclick="goToHome()">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Home
+      <div
+        class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+        style="width: 280px"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        >
+          <span class="fs-4"> FFU Model</span>
         </a>
-      </li>
-      <script>
-        function goToHome() {
-          var homeURL = "http://127.0.0.1:8000/#";
-          window.location.href = homeURL;
-        }
-        </script>
-      <li class="nav-item">
-        <a href="/ffu/FFUDashboard/" class="nav-link text-white" >
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-            Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="/ffu/FFUInput/" class="nav-link activate" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Quotation
-        </a>
-      </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAMAAAB61OwbAAAAclBMVEVHcEzxoKLpam3lU1fnVVjfKy/gMjXgKy7fJirfJSneIibeICTsfoDgKy/iPD/qc3XkRUjfJireHiLlUlXeGR7nZGfzoaPrfoDpamz3uLvnX2HkTFDzrK7shYfyoKPren3gJyvjQkbjP0PfJyvfIibfKi1BhC9iAAAAJnRSTlMAcZWODzr7///T//936vpRScv//f/zOfM8Jr29Ss0Iuy/+nlNHokMBhsYAAADVSURBVHgB1dBVAsMgDADQVKGkGpi73f+IdUP2vz3cBf6P5wdB4MEXYRTHjHMWx1HoHE8EjkSSgi0TC4x9a30m1jAvzPUoNJiBpkRhwBLWqm4C0jBtyCtYS7p+lKwfy7ErEliLBJHabHeKiDb7nVLEItAcjqdtW2yH4nxJweF6DLsivF37JWdYpPK+399zjLvigXlXyPVPHDL+eDAUyNqC+oLrr3gS0fDSsUB8goaZP8lA9xKGFxjeQvMGy4uPf9wW/AUO5Ycpain2KcHtfpGPh7zc4cc0y1ISBwdMJhQAAAAASUVORK5CYII=" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>k-ensol</strong>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="b-example-divider b-example-vr"></div>
-
-    <form id="ffuForm" action="/ffu/FFUInput/" method="post">
-        {% csrf_token %}
-
-        <h3>FFU 견적 의뢰서</h3><br>
-
-
-        <div class="container">
-        <div class="box1">
-          <label for="businessOwner">현장명<br>
-              <input type="text" id="businessOwner" name="businessOwner" autocomplete="off" Placeholder = "현장명 입력하세요" required />
-          </label><br><br>
-
-          <div class="spacer"></div>
-
-
+        <hr />
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link text-white" onclick="goToHome()">
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#home" />
+              </svg>
+              Home
+            </a>
+          </li>
+          <script>
+            function goToHome() {
+              var homeURL = "http://127.0.0.1:8000/#";
+              window.location.href = homeURL;
+            }
+          </script>
+          <li class="nav-item">
+            <a href="/ffu/FFUDashboard/" class="nav-link text-white">
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#speedometer2" />
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a
+              href="/ffu/FFUInput/"
+              class="nav-link activate"
+              aria-current="page"
+            >
+              <svg class="bi pe-none me-2" width="16" height="16">
+                <use xlink:href="#table" />
+              </svg>
+              Quotation
+            </a>
+          </li>
+        </ul>
+        <hr />
+        <div class="dropdown">
+          <a
+            href="#"
+            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAMAAAB61OwbAAAAclBMVEVHcEzxoKLpam3lU1fnVVjfKy/gMjXgKy7fJirfJSneIibeICTsfoDgKy/iPD/qc3XkRUjfJireHiLlUlXeGR7nZGfzoaPrfoDpamz3uLvnX2HkTFDzrK7shYfyoKPren3gJyvjQkbjP0PfJyvfIibfKi1BhC9iAAAAJnRSTlMAcZWODzr7///T//936vpRScv//f/zOfM8Jr29Ss0Iuy/+nlNHokMBhsYAAADVSURBVHgB1dBVAsMgDADQVKGkGpi73f+IdUP2vz3cBf6P5wdB4MEXYRTHjHMWx1HoHE8EjkSSgi0TC4x9a30m1jAvzPUoNJiBpkRhwBLWqm4C0jBtyCtYS7p+lKwfy7ErEliLBJHabHeKiDb7nVLEItAcjqdtW2yH4nxJweF6DLsivF37JWdYpPK+399zjLvigXlXyPVPHDL+eDAUyNqC+oLrr3gS0fDSsUB8goaZP8lA9xKGFxjeQvMGy4uPf9wW/AUO5Ycpain2KcHtfpGPh7zc4cc0y1ISBwdMJhQAAAAASUVORK5CYII="
+              alt=""
+              width="32"
+              height="32"
+              class="rounded-circle me-2"
+            />
+            <strong>k-ensol</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
         </div>
       </div>
 
-        <div class="parent">
-          <div class="first-box">
-          <label for="location">지역
-            <br>
-              <select id="location" name="location">
-                  <option value="삼성디스플레이">삼성디스플레이</option>
-                  <option value="삼성전자 천안">삼성전자 천안</option>
-                  <option value="삼성전자 평택">삼성전자 평택</option>
-                  <option value="삼성전자 화성">삼성전자 화성</option>
-                  <option value="삼성전자 기흥">삼성전자 기흥</option>
-                  <option value="천안">천안</option>
-                  <option value="탕정">탕정</option>
-                  <option value="음성">음성</option>
-                  <option value="청주">청주</option>
-                  <option value="오창">오창</option>
-                  <option value="평택">평택</option>
-                  <option value="화성">화성</option>
-                  <option value="동탄"> 동탄</option>
-                  <option value="기흥">기흥</option>
-                  <option value="안산">안산</option>
-                  <option value="이천">이천</option>
-                  <option value="인천 영종도">인천 영종도</option>
-                  <option value="파주">파주</option>
-                  <option value="구미">구미</option>
-                  <option value="부산">부산</option>
-              </select>
-          </label><br><br>
+      <div class="b-example-divider b-example-vr"></div>
+
+      <form id="ffuForm" action="/ffu/FFUInput/" method="post">
+        {% csrf_token %}
+
+      </br>
+        <h3>FFU Quotation</h3>
+        <br />
+        <h4>Direct Cost</h4>
+        <div class="container">
+          <div class="box1">
+            <label for="businessOwner"
+              >현장명<br />
+              <input
+                type="text"
+                id="businessOwner"
+                name="businessOwner"
+                autocomplete="off"
+                placeholder="현장명 입력하세요"
+                required
+              /> </label
+            ><br /><br />
+
+            <div class="spacer"></div>
+          </div>
         </div>
 
-        <div class="first-box">
-        <label for="size">규격
-          <br>
-            <select id="size" name="size">
+        <div class="parent">
+          <div class="first-box">
+            <label for="location"
+              >지역
+              <br />
+              <select id="location" name="location">
+                <option value="삼성디스플레이">삼성디스플레이</option>
+                <option value="삼성전자 천안">삼성전자 천안</option>
+                <option value="삼성전자 평택">삼성전자 평택</option>
+                <option value="삼성전자 화성">삼성전자 화성</option>
+                <option value="삼성전자 기흥">삼성전자 기흥</option>
+                <option value="천안">천안</option>
+                <option value="탕정">탕정</option>
+                <option value="음성">음성</option>
+                <option value="청주">청주</option>
+                <option value="오창">오창</option>
+                <option value="평택">평택</option>
+                <option value="화성">화성</option>
+                <option value="동탄">동탄</option>
+                <option value="기흥">기흥</option>
+                <option value="안산">안산</option>
+                <option value="이천">이천</option>
+                <option value="인천 영종도">인천 영종도</option>
+                <option value="파주">파주</option>
+                <option value="구미">구미</option>
+                <option value="부산">부산</option>
+              </select> </label
+            ><br /><br />
+          </div>
+
+          <div class="first-box">
+            <label for="size"
+              >규격
+              <br />
+              <select id="size" name="size">
                 <option value="1200*600">1200*600</option>
                 <option value="1200*1200">1200*1200</option>
                 <option value="1500*1300">1500*1300</option>
                 <option value="1500*650">1500*650</option>
                 <option value="1500*1320">1500*1320</option>
                 <option value="1320*750">1320*750</option>
-            </select>
-        </label><br><br>
-      </div>
-    
-          <div class="first-box">
-            <label for="quantity">수량
-              <br>
-                <input type="number" id="quantity" name="quantity" autocomplete="off" />
-            </label><br><br>
+              </select> </label
+            ><br /><br />
           </div>
-      </div>
 
-      <div class="parent">
-        <div class="first-box">
-          <label for="motortype">모터 종류
-            <br>
-              <select id="motortype" name="motortype">
-                  <option value="BLDC">BLDC</option>
-                  <option value="AC">AC</option>
-              </select>
-          </label><br><br>
-        </div>
-
-        <div class="first-box">
-          <label for="ph">PH
-            <br>
-              <select id="ph" name="ph">
-                  <option value="1PH">1PH</option>
-                  <option value="3PH">3PH</option>
-              </select>
-          </label><br><br>
-        </div>
-      
-        <div class="first-box">
-          <label for="filterstyle">필터 종류
-            <br>
-              <select id="filterstyle" name="filterstyle">
-                  <option value="ULPA">ULPA</option>
-                  <option value="HEPA">HEPA</option>
-              </select>
-          </label><br><br>
-        </div>
-      </div>
-    
-
-      <div class="parent">
-        <div class="first-box">
-          <label for="spec">사양
-            <br>
-              <select id="spec" name="spec">
-                  <option value="A 등급">A 등급</option>
-                  <option value="B 등급">B 등급</option>
-                  <option value="C 등급">C 등급</option>
-                  <option value="D 등급">D 등급</option>
-                  <option value="E 등급">E 등급</option>
-
-              </select>
-          </label><br><br>
-        </div>
-    </div>
-
-        <h4>간접비</h4><br>
-        
-        <div class="parent">
-    
           <div class="first-box">
-          <label for="maintenance">관리비 (%)
-            <br>
-              <input type="number" id="maintenance" name="maintenance" autocomplete="off" />
-          </label><br><br>
+            <label for="quantity"
+              >수량
+              <br />
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                autocomplete="off"
+              /> </label
+            ><br /><br />
+          </div>
         </div>
 
-        <div class="first-box">
-          <label for="operating_profit">영업이익 (%)
-            <br>
-              <input type="number" id="operating_profit" name="operating_profit" autocomplete="off" />
-          </label><br><br>
+        <div class="parent">
+          <div class="first-box">
+            <label for="motortype"
+              >모터 종류
+              <br />
+              <select id="motortype" name="motortype">
+                <option value="BLDC">BLDC</option>
+                <option value="AC">AC</option>
+              </select> </label
+            ><br /><br />
+          </div>
+
+          <div class="first-box">
+            <label for="ph"
+              >PH
+              <br />
+              <select id="ph" name="ph">
+                <option value="1PH">1PH</option>
+                <option value="3PH">3PH</option>
+              </select> </label
+            ><br /><br />
+          </div>
+
+          <div class="first-box">
+            <label for="filterstyle"
+              >필터 종류
+              <br />
+              <select id="filterstyle" name="filterstyle">
+                <option value="ULPA">ULPA</option>
+                <option value="HEPA">HEPA</option>
+              </select> </label
+            ><br /><br />
+          </div>
         </div>
-          
-      </div>
 
-      <div class="sub-button">
-        <button type="submit" class="custom-button">
-        <img src="https://freepngimg.com/thumb/submit_button/25497-9-submit-button-photos.png" alt="입력 버튼 이미지">
-        </button>
-      </div>  
-    
+        <div class="parent">
+          <div class="first-box">
+            <label for="spec"
+              >사양
+              <br />
+              <select id="spec" name="spec">
+                <option value="A 등급">A 등급</option>
+                <option value="B 등급">B 등급</option>
+                <option value="C 등급">C 등급</option>
+                <option value="D 등급">D 등급</option>
+                <option value="E 등급">E 등급</option>
+              </select> </label
+            ><br /><br />
+          </div>
+        </div>
 
-    </form>
+        <h4>Indirect Cost</h4>
+        <br />
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          let sizeDropdown = document.getElementById('size');
-          let motorTypeDropdown = document.getElementById('motortype');
-  
-          sizeDropdown.addEventListener('change', function() {
-              updateMotorTypeOptions();
+        <div class="parent">
+          <div class="first-box">
+            <label for="maintenance"
+              >관리비 (%)
+              <br />
+              <input
+                type="number"
+                id="maintenance"
+                name="maintenance"
+                autocomplete="off"
+              /> </label
+            ><br /><br />
+          </div>
+
+          <div class="first-box">
+            <label for="operating_profit"
+              >영업이익 (%)
+              <br />
+              <input
+                type="number"
+                id="operating_profit"
+                name="operating_profit"
+                autocomplete="off"
+              /> </label
+            ><br /><br />
+          </div>
+        </div>
+
+        <div class="sub-button">
+          <button type="submit" class="custom-button">
+            <img
+              src="https://freepngimg.com/thumb/submit_button/25497-9-submit-button-photos.png"
+              alt="입력 버튼 이미지"
+            />
+          </button>
+        </div>
+      </form>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let sizeDropdown = document.getElementById("size");
+          let motorTypeDropdown = document.getElementById("motortype");
+
+          sizeDropdown.addEventListener("change", function () {
+            updateMotorTypeOptions();
           });
-  
-          function updateMotorTypeOptions() {
-              let selectedSize = sizeDropdown.value;
-  
-              let motorTypeOptions = {
-                  '1500*1320': ['BLDC'],
-                  '1320*750': ['BLDC'],
-                  '1200*600': ['BLDC', 'AC'],
-                  '1200*1200': ['BLDC', 'AC'],
-                  '1500*1300': ['BLDC', 'AC'],
-                  '1500*650': ['BLDC', 'AC']
-              };
-  
-              motorTypeDropdown.innerHTML = '';
-              for(let optionValue of motorTypeOptions[selectedSize] || []) {
-                  let option = document.createElement('option');
-                  option.value = optionValue;
-                  option.innerText = optionValue;
-                  motorTypeDropdown.appendChild(option);
-              }
-          }
-  
-          updateMotorTypeOptions();  // 페이지 로드 시 초기 옵션 설정
-      });
-  </script>
-  
-  
 
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+          function updateMotorTypeOptions() {
+            let selectedSize = sizeDropdown.value;
+
+            let motorTypeOptions = {
+              "1500*1320": ["BLDC"],
+              "1320*750": ["BLDC"],
+              "1200*600": ["BLDC", "AC"],
+              "1200*1200": ["BLDC", "AC"],
+              "1500*1300": ["BLDC", "AC"],
+              "1500*650": ["BLDC", "AC"],
+            };
+
+            motorTypeDropdown.innerHTML = "";
+            for (let optionValue of motorTypeOptions[selectedSize] || []) {
+              let option = document.createElement("option");
+              option.value = optionValue;
+              option.innerText = optionValue;
+              motorTypeDropdown.appendChild(option);
+            }
+          }
+
+          updateMotorTypeOptions(); // 페이지 로드 시 초기 옵션 설정
+        });
+      </script>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="sidebars.js"></script>
-</body>
+  </body>
 </html>
