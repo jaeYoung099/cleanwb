@@ -1,9 +1,10 @@
 {% load static %} {% load humanize %}
+<!-- 결과 페이지 html -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="{% static 'images/wb_favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/wb_favicon.ico' %}" type="image/ico">
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -35,6 +36,8 @@
           자재비 (AL, SPCC 외)
           <br />
         </p>
+
+        <!-- 결과 페이지 html -->
         <p class="item-1-Jqo">
           {{ quantity|intcomma }} {% comment %} 자재비 수량 {% endcomment %}
           <br />

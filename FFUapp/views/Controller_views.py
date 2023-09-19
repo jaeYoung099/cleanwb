@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from FFUapp.models.Controller_models import AController, BController, CController, DController, EController
 
+# 컨트롤러 : spec별 grade table 선택
 def calculate_controller_price(size, spec, motortype, ph):
     try:    
         if spec == "A 등급":
@@ -22,6 +23,7 @@ def calculate_controller_price(size, spec, motortype, ph):
             ph=ph
         ).first() 
 
+        # 입력값을 통해 Primary key로 지정하여 ORM
         if controller:
             return controller.controller_price 
         else:

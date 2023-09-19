@@ -1,3 +1,4 @@
+# 각 views.py에서 가격계산 함수 호출
 from django.shortcuts import render, redirect
 from .Assembly_views import calculate_assembly_price
 from .Pack_views import calculate_pack_price
@@ -14,6 +15,7 @@ from .excel_views import download_excel, export_to_excel
 from .Move_views import calculate_carsize, calculate_moveprice
 from .FFilter_views import calculate_ffilter_price
 
+# 변수 지정
 자재비 = "자재비 (AL, SPCC 외)"
 도장비 = "도장비"
 NCT_가공비 = "NCT 가공비"
@@ -30,7 +32,7 @@ BELLMOUTH = "BELLMOUTH (보호망포함)"
 일반사양 = "일반사양"
 고사양 = "고사양"
 
-# OUTPUT 항목과 연관된 변수
+# 가격 항목별 분기처리
 def get_price_for_item(item_name, size, spec, ph, quantity=None, motortype=None, location=None, filterstyle=None, **kwargs):
     try:
         if item_name == 운반비:
@@ -82,10 +84,9 @@ def get_price_for_item(item_name, size, spec, ph, quantity=None, motortype=None,
     except Exception as e:
         print(f"Error occurred at {item_name}: {e}")
 
-# INPUT에서의 변수
+# 입력정보 처리
 def ffuInput(request):
     if request.method == 'POST':
-        # 기존 데이터 가져오기
         size = request.POST.get('size') or 'Unknown Size'
         spec = request.POST.get('spec')
         motortype = request.POST.get('motortype')
@@ -100,12 +101,6 @@ def ffuInput(request):
             quantity = int(quantity_str)
         except ValueError:
             quantity = 1
-
-        request.session['size'] = size
-        request.session['businessOwner'] = businessOwner
-        request.session['motortype'] = motortype
-        request.session['location'] = location
-        request.session['quantity'] = quantity
 
         # 운반비 단가, 합계 계산
         move_price_data = calculate_moveprice(location, size, quantity)
@@ -177,7 +172,7 @@ def ffuInput(request):
         try:
             operating_profit = float(operating_profit)
         except ValueError:
-            operating_profit = 1.0  # 디폴트 값 설정
+            operating_profit = 1.0 
 
         maintenance_unit = round(direct_unit * (maintenance/100))                  # 관리비 단가
         operating_profit_unit = round(direct_unit * (operating_profit/100))        # 영업이익 단가         
@@ -189,7 +184,8 @@ def ffuInput(request):
         # 총계
         aggregate_unit = direct_unit + maintenance_unit + operating_profit_unit    # 총계 단가
         aggregate_totals = direct_totals + indirect_totals                         # 총계 합계
-
+        
+        ####
         load_data = calculate_carsize(size, quantity)
 
         context = {
@@ -235,9 +231,17 @@ def ffuInput(request):
             'indirect_totals' : indirect_totals,
             'aggregate_unit' : aggregate_unit,
             'aggregate_totals' : aggregate_totals,
+            'spec' : spec,
         }
 
-        # Excel로 불러내기 위해 변수 저장
+        ## Excel로 불러내기 위해 세션 변수 저장
+        request.session['size'] = size
+        request.session['businessOwner'] = businessOwner
+        request.session['motortype'] = motortype
+        request.session['location'] = location
+        request.session['quantity'] = quantity
+        request.session['spec'] = spec
+
         # unit_price
         request.session['materialcost_unit_price'] = materialcost_unit_price
         request.session['paint_unit_price'] = paint_unit_price
@@ -275,6 +279,7 @@ def ffuInput(request):
         request.session['operating_profit_totals'] = operating_profit_totals
         request.session['aggregate_totals'] = aggregate_totals
 
+        # UNIT 소계
         request.session['subtotal_unit'] = subtotal_unit
         request.session['subtotal_totals'] = subtotal_totals
 

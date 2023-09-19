@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from FFUapp.models.FFilter_models import AFilter, BFilter, CFilter, DFilter, EFilter
 
+# FILTER : spec별 grade table 선택
 def calculate_ffilter_price(size, spec, filterstyle):
     try:    
         if spec == "A 등급":
@@ -16,6 +17,7 @@ def calculate_ffilter_price(size, spec, filterstyle):
         else:
             return 0
 
+        # 입력값을 통해 Primary key로 지정하여 ORM
         ffilter = model.objects.filter(
             size=size,
             filterstyle=filterstyle 

@@ -1,12 +1,9 @@
 {% load static %}
+<!-- 입력페이지 html -->
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
   <head>
-    <link rel="icon" href="{% static 'images/wb_favicon.ico' %}" type="image/x-icon">
-
-    <script src="/docs/5.3/assets/js/color-modes.js"></script>
-    <link rel="stylesheet" href="{% static "css/input.css" %}" type="text/css">
-
+    <link rel="icon" href="{% static 'images/wb_favicon.ico' %}" type="image/ico">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
@@ -48,7 +45,7 @@
       sizes="16x16"
       type="image/png"
     />
-    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json" />
+
     <link
       rel="mask-icon"
       href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
@@ -161,13 +158,13 @@
         box-shadow: none;
       }
       .nav-link:hover {
-        background-color: #2e64fe; /* 원하는 배경색으로 변경 */
-        color: #fff; /* 원하는 텍스트 색상으로 변경 */
+        background-color: #2e64fe; 
+        color: #fff;
       }
 
       .nav-link[aria-current="page"] {
-        background-color: #2e64fe; /* 원하는 배경색으로 변경 */
-        color: #fff; /* 원하는 텍스트 색상으로 변경 */
+        background-color: #2e64fe; 
+        color: #fff; 
       }
       .nav-link {
         margin-top: 3px;
@@ -188,7 +185,7 @@
       .box1 label {
         font-family: Noto Sans KR;
         margin-top: 20px;
-        font-size: 15px; /* 원하는 크기로 조정하세요 */
+        font-size: 15px; 
       }
 
       .parent {
@@ -201,7 +198,7 @@
         width: 800px;
         font-size: 15px;
         font-family: Noto Sans KR;
-        margin: 0 auto; /* 가로 가운데 정렬 */
+        margin: 0 auto;
       }
 
       .first-box {
@@ -219,7 +216,7 @@
       }
 
       .first-box:first-child {
-        margin-left: 10px; /* 첫 번째 컨텐츠의 시작 부분에 왼쪽 마진 추가 */
+        margin-left: 10px;
       }
 
       input {
@@ -231,8 +228,8 @@
 
       select,
       input[type="number"] {
-        width: 260px; /* 셀렉트 박스 가로 크기 조정 */
-        height: 40px; /* 셀렉트 박스 세로 크기 조정 */
+        width: 260px;
+        height: 40px;
         border: 1px solid #ccc;
         outline: none;
         background-color: #e6e6e6;
@@ -329,15 +326,12 @@
         outline: none;
         background-color: #e6e6e6;
         box-sizing: border-box;
-        margin-top: 10px; /* 여백 추가 */
-        margin-bottom: 10px; /* 여백 추가 */
+        margin-top: 10px; 
+        margin-bottom: 10px; 
         font-weight: 350;
         padding: 5px;
       }
     </style>
-
-    <!-- Custom styles for this template -->
-    <link href="sidebars.css" rel="stylesheet" />
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -628,8 +622,9 @@
           </button>
         </div>
       </form>
-
+      
       <script>
+        /* size별 모터종류가 다르기 때문에 size에 대응하여 모터종류 제한 */
         document.addEventListener("DOMContentLoaded", function () {
           let sizeDropdown = document.getElementById("size");
           let motorTypeDropdown = document.getElementById("motortype");
@@ -668,7 +663,5 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-
-    <script src="sidebars.js"></script>
   </body>
 </html>

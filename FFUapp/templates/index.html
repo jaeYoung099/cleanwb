@@ -1,30 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>kensol homepage</title>
-    <link rel="icon" href="{% static 'images/wb_favicon.ico' %}" type="image/x-icon">
+    <!-- favicon 지정 -->
+    <link rel="icon" href="{% static 'images/wb_favicon.ico' %}" type="image/ico">
+    <!-- bootstrap 연동 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <!-- 폰트 지정을 위해 google font 연동 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <!-- 서버 통신을 위하여 ajax 사용 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 유튜브 링크 연결 -->
     <script src="https://unpkg.com/youtube-background@1.0.14/jquery.youtube-background.min.js"></script>
     <style>
       .navbar {
@@ -125,7 +125,7 @@
 
       .content {
         position: relative;
-        z-index: 1; /* 콘텐츠를 유튜브 동영상 위에 배치 */
+        z-index: 1;
       }
     </style>
     <script>
@@ -175,6 +175,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" href="#">FFU</a></li>
                   <li><a class="dropdown-item" href="#">EFU</a></li>
+                  <li><a class="dropdown-item" href="#">OAC</a></li>
                 </ul>
               </li>
             </ul>
@@ -207,5 +208,18 @@
         $("[data-vbg]").youtube_background(); // 실행
       });
     </script>
+    <!-- 추후 수정사항 : FFU이외의 제품을 선택할 경우 아직 준비되지 않았다고 표시 -->
+    <script>
+      $(document).ready(function () {
+          $(".dropdown-menu a").on('click', function (e) {
+              var selectedText = $(this).text();
+              if (selectedText == "EFU" || selectedText == "OAC") {
+                  alert("아직 준비되지 않았습니다.");
+                  e.preventDefault(); // 링크 기능을 중지합니다.
+              }
+          });
+      });
+    </script>
+
   </body>
 </html>

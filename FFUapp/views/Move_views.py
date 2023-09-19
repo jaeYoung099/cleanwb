@@ -2,6 +2,8 @@ from django.shortcuts import render
 from FFUapp.models.Move_models import LoadQuantity, LocationMovecost
 from collections import defaultdict
 
+# 운반비 
+# 선택한 size에 대한 차량별 적재수량(ea) 가져오기 
 def calculate_carsize(size, quantity):
     try:
         load_data_qs = LoadQuantity.objects.filter(size=size)
@@ -18,7 +20,7 @@ def calculate_carsize(size, quantity):
         five_ton_ea = load_data['5ton']
         eleven_ton_ea = load_data['11ton']
 
-        # 조건에 따른 차량 대수 계산
+        # 가져온 ea에 대해 quantity에 대응하여 조건에 따른 차량 대수 계산
         if quantity >= eleven_ton_ea:
             ele_carnum = quantity // eleven_ton_ea
             remainder = quantity % eleven_ton_ea
@@ -48,19 +50,18 @@ def calculate_carsize(size, quantity):
         return {'one_carnum': 0, 'five_carnum': 0, 'ele_carnum': 0}
 
 
-
+# 계산된 차량대수를 통해 운반비 계산
 def calculate_moveprice(location, size, quantity):
     try:
         loc_data_qs = LocationMovecost.objects.filter(location=location)
         
-        # 각 carsize의 move_price를 저장할 딕셔너리 초기화
+        # 데이터베이스에서 가져온 정보를 로드
         move_price_data = {}
         for item in loc_data_qs:
-            # 데이터베이스에서 가져온 정보를 로드합니다.
             carsize = item.carsize
             move_price = item.move_price
 
-            # 가져온 정보를 move_price_data 딕셔너리에 저장합니다.
+            # 가져온 정보를 move_price_data 딕셔너리에 저장
             move_price_data[carsize] = move_price
 
         # 각 carsize의 move_price를 변수에 저장
@@ -68,15 +69,15 @@ def calculate_moveprice(location, size, quantity):
         fivemove_price = move_price_data.get('5ton', 0)
         onemove_price = move_price_data.get('1ton', 0)
 
-        # calculate_carsize 함수에서 각 carsize의 carnum을 가져온다
+        # calculate_carsize 함수에서 각 carsize의 carnum을 가져온다.
         carsize_count = calculate_carsize(size, quantity)
 
-        # 각 carsize의 carprice를 계산한다
+        # 각 carsize의 carprice를 계산
         elecarprice = elemove_price * carsize_count['ele_carnum']
         fivecarprice = fivemove_price * carsize_count['five_carnum']
         onecarprice = onemove_price * carsize_count['one_carnum']
 
-        # 최종 운반비를 계산한다
+        # 각 carsize의 carprice를 더해 최종 운반비를 계산
         car_price = elecarprice + fivecarprice + onecarprice
 
         return {

@@ -7,8 +7,8 @@ from openpyxl.cell import MergedCell
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side, NamedStyle
 from django.http import HttpResponse
 
-# data to excel
-def export_to_excel(request, items, businessOwner, motortype, location, size, quantity, subtotal_unit, subtotal_totals, materialcost_unit_price, paint_unit_price, nct_unit_price, motor_unit_price, controller_unit_price, fan_unit_price, bellmouth_unit_price, volt_unit_price, jab_unit_price, assembly_unit_price, pack_unit_price, materialcost_total_price, paint_total_price, nct_total_price, motor_total_price, controller_total_price, fan_total_price, bellmouth_total_price, volt_total_price, jab_total_price, assembly_total_price, pack_total_price, transportation_total_price, ffilter_unit_price, ffilter_total_price, direct_unit, direct_totals, maintenance_unit, maintenance_totals, operating_profit_unit, operating_profit_totals, aggregate_unit, aggregate_totals):
+# command_views.py의 DATA를 EXCEL로 생성
+def export_to_excel(request, items, businessOwner, motortype, location, size, spec, quantity, subtotal_unit, subtotal_totals, materialcost_unit_price, paint_unit_price, nct_unit_price, motor_unit_price, controller_unit_price, fan_unit_price, bellmouth_unit_price, volt_unit_price, jab_unit_price, assembly_unit_price, pack_unit_price, materialcost_total_price, paint_total_price, nct_total_price, motor_total_price, controller_total_price, fan_total_price, bellmouth_total_price, volt_total_price, jab_total_price, assembly_total_price, pack_total_price, transportation_total_price, ffilter_unit_price, ffilter_total_price, direct_unit, direct_totals, maintenance_unit, maintenance_totals, operating_profit_unit, operating_profit_totals, aggregate_unit, aggregate_totals):
     wb = Workbook()
     ws = wb.active
 
@@ -33,13 +33,13 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
         for cell in row:
             cell.font = font
     
-    # 셀 병합 및 병합위치에 내용넣기
+    # 셀 병합 및 병합위치에 내용넣기(품명, size, spec)
     ws.merge_cells('B5:B6')
     ws['B5'] = "품명"
     ws['B5'].alignment = Alignment(horizontal='center', vertical='center')
 
     ws.merge_cells('C5:E5')
-    ws['C5'] = f"FFU {size}"
+    ws['C5'] = f"FFU {size} ({spec})"
     ws['C5'].font = Font(bold=True)
     ws['C5'].alignment = Alignment(horizontal='center', vertical='center')
 
@@ -61,13 +61,14 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     for i in range(7, 27):  
         ws.row_dimensions[i].height = 24.6
 
-    # FFUInput에서 값 불러오기 위해 선언
+    # 세션 데이터 불러오기 위해 선언
     businessOwner = businessOwner
     motortype = motortype 
     location = location 
     size = size
+    spec = spec
 
-    # 현장명, 유형, 지역
+    ## 현장명, 유형, 지역 : 중간정렬, 폰트지정, 내용추가
     alignment_center_left = Alignment(horizontal="left", vertical="center")
     alignment_center_center = Alignment(horizontal="center", vertical="center")
     alignment_center_right = Alignment(horizontal="right", vertical="center")
@@ -85,7 +86,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     ws['B4'].font = Font(size = 14)
     ws['B4'].alignment = alignment_center_left
 
-    # 품명, 수량, 단가, 합계의 제목 행
+    ## 품명, 수량, 단가, 합계의 제목 행 폰트 수정
     font_11 = Font(size=11)
 
     start_row = 6
@@ -132,7 +133,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
             cell.alignment = alignment_center
 
 
-    # 1. 엑셀에서 B7부터 B18까지의 품명
+    # 1. 엑셀에서 B7부터 B18까지의 품명 넣기
     start_row = 7
     item_names = [
         "자재비 (AL, SPCC 외)", "도장비", "NCT 가공비", "MOTOR", "컨트롤러", "FAN",
@@ -142,7 +143,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     for i, item_name in enumerate(item_names, start=start_row):
         ws.cell(row=i, column=2, value=item_name)
 
-    # 2. C7부터 C17까지, C20, C23부터 C24까지의 셀에 수량(quantity)
+    # 2. C7부터 C17까지, C20, C23부터 C24까지의 셀에 수량(quantity) 넣기
     start_row = 7
     quantity_list = [quantity] * 11
 
@@ -153,7 +154,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     for i in range(23, 25):
         ws.cell(row=i, column=3, value=format(quantity, ","))  # C23~C24
 
-    # 3. D7부터 D17까지 각 품목에 대한 단가(unit_price)
+    # 3. D7부터 D17까지 각 품목에 대한 단가(unit_price) 넣기
     unit_prices = [
         format(materialcost_unit_price, ","),
         format(paint_unit_price, ","),
@@ -172,7 +173,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     for i, unit_price in enumerate(unit_prices, start=start_row):
         ws.cell(row=i, column=4, value=unit_price)
 
-    # 4. E7부터 E17까지 각 품목에 대한 합계(total_price)
+    # 4. E7부터 E17까지 각 품목에 대한 합계(total_price) 넣기
     total_prices = [
         format(materialcost_total_price, ","),
         format(paint_total_price, ","),
@@ -191,7 +192,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     for i, total_price in enumerate(total_prices, start=start_row):
         ws.cell(row=i, column=5, value=total_price)
 
-    # UNIT 소계
+    # UNIT 소계 넣기
     ws["B19"].value = "UNIT 소계"
     ws['D19'] = f'\\   {int(subtotal_unit):,}'
     ws['D19'].number_format = "#,##0"
@@ -199,7 +200,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     ws['E19'] = f'\\   {int(subtotal_totals):,}'
     ws['E19'].number_format = "#,##0"
 
-    # FILTER 소계
+    # FILTER, FILTER 소계 넣기
     ws["B20"].value = "FILTER"
     ws['D20'] = f'{int(ffilter_unit_price):,}'
     ws['E20'] = f'{int(ffilter_total_price):,}'
@@ -208,7 +209,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
     ws['D21'] = f'\\   {int(ffilter_unit_price):,}'
     ws['E21'] = f'\\   {int(ffilter_total_price):,}'
 
-    # 원가 합계, 간접비, 총계, 비고
+    # 원가 합계, 간접비, 총계, 비고 넣기
     ws["B22"].value = "원가 합계"
     ws['D22'] = f'\\   {int(direct_unit):,}'
     ws['E22'] = f'\\   {int(direct_totals):,}'
@@ -232,9 +233,8 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
         for c in cell:
             c.alignment = Alignment(horizontal='center')
 
-    # 글씨크기 설정
-    font_size_10 = Font(size=10)
     # 각 영역에 대한 글씨 크기 설정
+    font_size_10 = Font(size=10)
     font_size_ranges = [
         (7, 18, 2, 5, font_size_10),
         (20, 20, 2, 5, font_size_10),
@@ -317,7 +317,7 @@ def export_to_excel(request, items, businessOwner, motortype, location, size, qu
 
     return wb
 
-# excel 다운로드
+# excel 다운로드 제공
 def download_excel(request):
     items = request.session.get('items', [])  
     businessOwner = request.session.get('businessOwner', '')
@@ -327,9 +327,9 @@ def download_excel(request):
     quantity = request.session.get('quantity', '')
     subtotal_unit = request.session.get('subtotal_unit', '')
     subtotal_totals = request.session.get('subtotal_totals', '')
+    spec = request.session.get('spec', '')
 
-
-    # request를 통한 변수 불러오기
+    # request를 통한 세션 변수 불러오기
     # unit_price (단가)
     materialcost_unit_price = request.session.get('materialcost_unit_price', 0)
     paint_unit_price = request.session.get('paint_unit_price', 0)
@@ -374,6 +374,7 @@ def download_excel(request):
     motortype,
     location,
     size,
+    spec,
     quantity,
     subtotal_unit,
     subtotal_totals,
@@ -410,7 +411,6 @@ def download_excel(request):
     aggregate_unit, 
     aggregate_totals
 )
-
 
     output = io.BytesIO()
     wb.save(output)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from FFUapp.models.MaterialCost_models import AMaterialcost, BMaterialcost, CMaterialcost, DMaterialcost, EMaterialcost
 
+# 자재비 : spec별 grade table 선택
 def calculate_materialcost_price(size, spec):
     try:    
         if spec == "A 등급":
@@ -16,11 +17,13 @@ def calculate_materialcost_price(size, spec):
         else:
             return 0  
 
+        # 입력값을 통해 Primary key로 지정하여 ORM
         materialcosts = model.objects.filter(size=size)
         
         if not materialcosts.exists():
             return 0
 
+        # 자재비 가격 계산
         calculate_materialcost_price = 0
         for materialcost in materialcosts:
             if materialcost.manufacture_quantity == 0:

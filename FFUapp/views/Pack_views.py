@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from FFUapp.models.Pack_models import APack, BPack, CPack, DPack, EPack
 
+# 포장용팔렛트 : spec별 grade table 선택
 def calculate_pack_price(size, spec):
     try:    
         if spec == "A 등급":
@@ -16,6 +17,7 @@ def calculate_pack_price(size, spec):
         else:
             return 0
 
+        # 입력값을 통해 Primary key로 지정하여 ORM
         pack = model.objects.filter(size=size).first()
         if pack:
             return pack.pack_price 

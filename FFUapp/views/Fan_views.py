@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from FFUapp.models.Fan_models import AFan, BFan, CFan, DFan, EFan
 
+# FAN : spec별 grade table 선택
 def calculate_fan_price(size, spec, motortype):
     try:    
         if spec == "A 등급":
@@ -16,6 +17,7 @@ def calculate_fan_price(size, spec, motortype):
         else:
             return 0
 
+        # 입력값을 통해 Primary key로 지정하여 ORM
         fan = model.objects.filter(
             size=size,
             motortype=motortype
